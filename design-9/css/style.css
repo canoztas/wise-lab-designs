@@ -1,0 +1,1505 @@
+/* ============================================
+   WISE Lab - Matrix Hacker / Terminal Theme
+   ============================================ */
+
+/* 1. CSS Custom Properties (Design Tokens)
+   ============================================ */
+:root {
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #0d0d0d;
+  --color-bg-accent: #050505;
+
+  --color-accent-primary: #00ff41;
+  --color-accent-secondary: #0d7a0d;
+  --color-accent-glow: rgba(0, 255, 65, 0.15);
+  --color-accent-amber: #ffb000;
+
+  --color-text-primary: #33cc33;
+  --color-text-secondary: #1a8a1a;
+  --color-text-heading: #00ff41;
+  --color-text-accent: #00ff41;
+  --color-text-muted: #1a6b1a;
+
+  --color-border: rgba(13, 122, 13, 0.3);
+  --color-border-accent: rgba(0, 255, 65, 0.4);
+  --color-border-dim: #0d3a0d;
+
+  --font-body: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-heading: 'Fira Code', 'Courier New', monospace;
+  --font-mono: 'Fira Code', 'IBM Plex Mono', monospace;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --shadow-glow: 0 0 15px rgba(0, 255, 65, 0.15);
+  --header-height: 72px;
+}
+
+/* 2. Reset & Base
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* CRT Scanline Effect Overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-amber);
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.3);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-heading);
+  font-weight: 600;
+  margin-top: 0;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed var(--color-border-dim);
+  margin: 1rem 0;
+}
+
+ul, ol {
+  color: var(--color-text-secondary);
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.25);
+  color: #00ff41;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* Blinking cursor animation */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes matrix-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.08; }
+}
+
+/* 3. Header & Navigation
+   ============================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 2px solid var(--color-accent-secondary);
+  height: var(--header-height);
+  transition: background var(--transition-base);
+}
+
+.site-header.scrolled {
+  background: rgba(0, 0, 0, 0.98);
+  border-bottom-color: var(--color-accent-primary);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-wise {
+  height: 40px;
+  width: auto;
+  filter: brightness(1.2) saturate(0.5) hue-rotate(80deg);
+}
+
+.logo-hacettepe {
+  height: 40px;
+  width: auto;
+  filter: brightness(0.8) saturate(0.3) hue-rotate(80deg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.brand-sub {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+.site-nav .nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.25rem;
+}
+
+.site-nav .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.site-nav .nav-link:hover {
+  color: var(--color-accent-primary);
+  background: rgba(0, 255, 65, 0.05);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.nav-link-dropdown {
+  cursor: default;
+}
+
+.nav-link-dropdown i {
+  font-size: 0.65rem;
+  margin-left: 0.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(5, 5, 5, 0.97);
+  border: 1px solid var(--color-accent-secondary);
+  border-top: 2px solid var(--color-accent-primary);
+  padding: 0.5rem 0;
+  min-width: 260px;
+  list-style: none;
+  z-index: 100;
+}
+
+.nav-dropdown .dropdown-menu.show {
+  display: block;
+}
+
+.nav-dropdown .dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  transition: all var(--transition-fast);
+}
+
+.nav-dropdown .dropdown-menu li a::before {
+  content: '> ';
+  color: var(--color-text-muted);
+}
+
+.nav-dropdown .dropdown-menu li a:hover {
+  color: var(--color-accent-primary);
+  background: rgba(0, 255, 65, 0.05);
+}
+
+.nav-dropdown .dropdown-menu li a:hover::before {
+  color: var(--color-accent-primary);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--color-accent-secondary);
+  cursor: pointer;
+  gap: 5px;
+  padding: 0;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-accent-primary);
+  transition: all var(--transition-base);
+}
+
+.nav-toggle span {
+  position: relative;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle span::before {
+  top: -6px;
+}
+
+.nav-toggle span::after {
+  top: 6px;
+}
+
+.nav-toggle.active span {
+  background: transparent;
+}
+
+.nav-toggle.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+  background: var(--color-accent-primary);
+}
+
+.nav-toggle.active span::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background: var(--color-accent-primary);
+}
+
+.logo-link-uni {
+  display: flex;
+  align-items: center;
+}
+
+/* 4. Hero Section (Homepage)
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+  padding-top: var(--header-height);
+  padding-bottom: 3rem;
+}
+
+/* Matrix rain CSS effect */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1px, rgba(0, 255, 65, 0.15) 1px, transparent 1px),
+    radial-gradient(circle 1px, rgba(0, 255, 65, 0.08) 1px, transparent 1px),
+    radial-gradient(circle 1px, rgba(0, 255, 65, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px, 60px 60px, 80px 80px;
+  background-position: 0 0, 20px 20px, 10px 30px;
+  animation: grid-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 38px,
+      rgba(0, 255, 65, 0.03) 38px,
+      rgba(0, 255, 65, 0.03) 40px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(0, 255, 65, 0.015) 18px,
+      rgba(0, 255, 65, 0.015) 20px
+    );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 255, 65, 0.2);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: var(--color-accent-primary);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* Blinking cursor after hero title */
+.hero-title::after {
+  content: '_';
+  animation: blink-cursor 1s step-end infinite;
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+}
+
+.hero-subtitle::before {
+  content: '> ';
+  color: var(--color-text-muted);
+}
+
+.hero-text {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.hero-text::before {
+  content: '// ';
+  color: var(--color-border-dim);
+}
+
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  padding: 0;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent-primary);
+  opacity: 0.6;
+}
+
+.hero-card:hover,
+.hero-card.active {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15), inset 0 0 20px rgba(0, 255, 65, 0.03);
+}
+
+.hero-card:hover::before,
+.hero-card.active::before {
+  opacity: 1;
+}
+
+/* Inner padding for hero cards (content area below terminal bar) */
+.hero-card > .hero-card-icon,
+.hero-card > h2,
+.hero-card > p {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.hero-card > .hero-card-icon {
+  padding-top: 1.25rem;
+}
+
+.hero-card > p:last-child {
+  padding-bottom: 1.25rem;
+}
+
+.hero-card-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent-primary);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.hero-card h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* When terminal-bar is inside hero-card, adjust padding */
+.hero-card .terminal-bar + .hero-card-icon,
+.hero-card .terminal-bar ~ .hero-card-icon {
+  padding-top: 1rem;
+}
+
+.hero-card .terminal-bar ~ p:last-child {
+  padding-bottom: 1.25rem;
+}
+
+/* 5. Section Titles
+   ============================================ */
+.section-title {
+  font-family: var(--font-heading);
+  color: var(--color-accent-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--color-accent-secondary);
+  display: inline-block;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.section-title::before {
+  content: '$ ';
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.section-title-center {
+  text-align: center;
+  display: block;
+}
+
+/* 6. News Section (Homepage)
+   ============================================ */
+.news-section {
+  padding: 4rem 0;
+  background: var(--color-bg-primary);
+}
+
+.news-social {
+  margin-bottom: 1.5rem;
+}
+
+.twitter-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: transparent;
+  border: 1px dashed var(--color-accent-secondary);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  transition: all var(--transition-fast);
+}
+
+.twitter-follow:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+  border-style: solid;
+}
+
+.news-panel {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+}
+
+.news-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-panel::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.news-panel::-webkit-scrollbar-thumb {
+  background: var(--color-accent-secondary);
+}
+
+.news-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+.news-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--color-border-dim);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-item > p:first-child::before {
+  content: '> ';
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.news-item p {
+  margin: 0 0 0.25rem;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+}
+
+.news-item .date {
+  color: var(--color-accent-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.news-item .date::before {
+  content: '[';
+  color: var(--color-text-muted);
+}
+
+.news-item .date::after {
+  content: ']';
+  color: var(--color-text-muted);
+}
+
+/* 7. About Section
+   ============================================ */
+.about-section {
+  padding: 4rem 0;
+  background: var(--color-bg-primary);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.about-content p {
+  text-align: justify;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+/* 8. Projects Section (Homepage)
+   ============================================ */
+.projects-section {
+  background: var(--color-bg-secondary);
+  padding: 4rem 0;
+  border-top: 1px solid var(--color-border-dim);
+  border-bottom: 1px solid var(--color-border-dim);
+}
+
+.project-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-accent-secondary);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Terminal title bar effect - thicker top border */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent-primary);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.project-card:hover {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(0.3) sepia(0.5) hue-rotate(80deg);
+  transition: all var(--transition-base);
+}
+
+.project-card:hover img {
+  filter: brightness(0.5) saturate(0.5) sepia(0.5) hue-rotate(80deg);
+}
+
+.project-card-body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-title {
+  margin-bottom: 0.75rem;
+}
+
+.project-card-title a {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: color var(--transition-fast);
+}
+
+.project-card-title a:hover {
+  color: var(--color-accent-amber);
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.3);
+}
+
+.project-card-text {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: justify;
+  flex: 1;
+}
+
+.project-card-text a {
+  color: var(--color-text-secondary);
+}
+
+.project-card:hover .project-card-text a {
+  color: var(--color-text-primary);
+}
+
+/* 9. Project Detail Pages
+   ============================================ */
+.project-hero-banner {
+  background: var(--color-bg-primary);
+  padding: calc(var(--header-height) + 2rem) 0 2rem;
+  border-bottom: 1px solid var(--color-accent-secondary);
+}
+
+.breadcrumb-nav {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+}
+
+.breadcrumb-nav a {
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb-nav a:hover {
+  color: var(--color-accent-primary);
+}
+
+.breadcrumb-nav span {
+  color: var(--color-accent-primary);
+}
+
+.project-page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+}
+
+.project-page-title::before {
+  content: '> ';
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.project-detail-section {
+  padding: 2.5rem 0;
+}
+
+.project-description {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.project-sponsor-badge {
+  color: var(--color-accent-amber);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  padding: 1rem;
+  border: 1px dashed var(--color-accent-secondary);
+  background: var(--color-bg-secondary);
+}
+
+.project-sponsor-badge img {
+  width: 50px;
+  margin-top: 0.5rem;
+  filter: brightness(0.8) hue-rotate(80deg);
+}
+
+/* Info Cards (Research Topics, Team, Resources) */
+.info-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  border-left: 3px solid var(--color-accent-primary);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  height: 100%;
+}
+
+.info-card-title {
+  color: var(--color-accent-primary);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--color-accent-secondary);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+.info-card-title::before {
+  content: '# ';
+  color: var(--color-text-muted);
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-card ul li {
+  padding: 0.35rem 0;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-family: var(--font-mono);
+}
+
+.info-card ul li::before {
+  content: '>';
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-accent-secondary);
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+}
+
+/* Team Members */
+.project-member {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.member-img-circular {
+  border-radius: 0;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 1px solid var(--color-accent-secondary);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+  filter: saturate(0.3) brightness(0.8);
+}
+
+.project-member:hover .member-img-circular {
+  border-color: var(--color-accent-primary);
+  filter: saturate(0.5) brightness(0.9) sepia(0.3) hue-rotate(80deg);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.member-name b {
+  color: var(--color-text-heading);
+  font-size: 0.85rem;
+  font-family: var(--font-heading);
+}
+
+.member-name p,
+.member-name .team-text {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 1.4;
+  font-family: var(--font-mono);
+}
+
+/* 10. Publications
+   ============================================ */
+.publications-section {
+  padding: 2.5rem 0;
+}
+
+.publication-item {
+  padding: 1rem 0 1rem 2.5rem;
+  border-bottom: 1px dashed var(--color-border-dim);
+  position: relative;
+  font-family: var(--font-mono);
+}
+
+.publication-item:last-child {
+  border-bottom: none;
+}
+
+.publication-item .publication-icon {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  color: var(--color-accent-secondary);
+  font-size: 1rem;
+}
+
+.publication-item .publication-title {
+  margin-bottom: 0.25rem;
+}
+
+.publication-item .publication-title b,
+.publication-item .publication-title a {
+  color: var(--color-text-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.publication-item .publication-title a:hover {
+  color: var(--color-accent-amber);
+}
+
+.publication-item .publication-content {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.publication-item .publication-content i {
+  color: var(--color-text-muted);
+}
+
+.publication-item .publication-content a {
+  color: var(--color-text-secondary);
+}
+
+.publication-item .publication-content a:hover {
+  color: var(--color-accent-primary);
+}
+
+.publication-item .publication-content p {
+  margin: 0;
+}
+
+/* 11. Thesis Section
+   ============================================ */
+.thesis-section {
+  padding: 2.5rem 0;
+}
+
+.thesis-item {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--color-border-dim);
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+}
+
+.thesis-item:last-child {
+  border-bottom: none;
+}
+
+.thesis-item b {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+}
+
+.thesis-item p {
+  margin: 0.25rem 0;
+  color: var(--color-text-secondary);
+}
+
+/* 12. Dataset Page
+   ============================================ */
+.dataset-section {
+  padding-top: calc(var(--header-height) + 2rem);
+  padding-bottom: 3rem;
+}
+
+.cite-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  border-left: 3px solid var(--color-accent-primary);
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-primary);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.policy-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.policy-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  padding: 1.5rem;
+}
+
+.policy-card h5 {
+  color: var(--color-accent-primary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+.policy-card ol {
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  padding-left: 1.25rem;
+  font-family: var(--font-mono);
+}
+
+.organizations-list {
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.organizations-list ol {
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  font-family: var(--font-mono);
+}
+
+/* 13. News Article Page
+   ============================================ */
+.article-section {
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 3rem;
+}
+
+.article-section .article-title {
+  color: var(--color-accent-primary);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+.article-section p {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  text-align: justify;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.article-section ul,
+.article-section ol {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.article-section a {
+  color: var(--color-accent-primary);
+}
+
+/* 14. Footer
+   ============================================ */
+.site-footer {
+  background: var(--color-bg-primary);
+  border-top: 2px solid var(--color-accent-secondary);
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-title {
+  color: var(--color-accent-primary);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+.footer-title::before {
+  content: '$ ';
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.footer-address {
+  color: var(--color-text-secondary);
+  font-style: normal;
+  line-height: 1.8;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.footer-address i {
+  color: var(--color-accent-secondary);
+  width: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.footer-address a {
+  color: var(--color-accent-primary);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  padding-top: 2.5rem;
+}
+
+.footer-social a {
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  transition: all var(--transition-base);
+}
+
+.footer-social a:hover {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+.footer-copy {
+  padding-top: 2.5rem;
+  text-align: right;
+}
+
+.footer-copy p {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+/* 15. Terminal Bar & Prompt Elements
+   ============================================ */
+.terminal-prompt {
+  font-family: var(--font-mono);
+  color: var(--color-accent-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-bar {
+  background: #1a1a1a;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid #1a3a1a;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-accent-secondary);
+}
+
+.terminal-bar .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-bar .dot.red { background: #ff5f56; }
+.terminal-bar .dot.yellow { background: #ffbd2e; }
+.terminal-bar .dot.green { background: #27c93f; }
+
+.terminal-bar .bar-title {
+  margin-left: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
+/* About terminal wrapper */
+.about-terminal-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--color-accent-secondary);
+  background: var(--color-bg-secondary);
+}
+
+.about-terminal-wrap .about-content {
+  border: none;
+  margin: 0;
+  max-width: none;
+}
+
+/* 16. Responsive
+   ============================================ */
+@media (max-width: 991.98px) {
+  .hero-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: calc(var(--header-height) + 2rem) 0 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-nav.active {
+    display: block;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.98);
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-accent-secondary);
+    z-index: 999;
+  }
+
+  .site-nav.active .nav-list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav.active .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .site-nav.active .dropdown-menu {
+    position: static;
+    background: transparent;
+    border: none;
+    border-left: 1px dashed var(--color-accent-secondary);
+    padding-left: 1rem;
+    margin-left: 1rem;
+  }
+
+  .site-nav.active .dropdown-menu.show {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .footer-copy {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .policy-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .organizations-list {
+    columns: 1;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .header-brand .brand-text {
+    display: none;
+  }
+
+  .logo-link-uni {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* 17. People Page
+   ============================================ */
+.people-section {
+  padding: 2.5rem 0;
+}
+
+.people-section .section-title {
+  margin-top: 1.5rem;
+}
+
+.member-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-secondary);
+  padding: 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-base);
+}
+
+.member-card:hover {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.member-card .member-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid var(--color-accent-secondary);
+  margin-bottom: 1rem;
+  filter: saturate(0.3) brightness(0.8);
+  transition: all var(--transition-base);
+}
+
+.member-card:hover .member-photo {
+  border-color: var(--color-accent-primary);
+  filter: saturate(0.5) brightness(0.9) sepia(0.3) hue-rotate(80deg);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.member-card .member-placeholder {
+  font-size: 3.5rem;
+  color: var(--color-accent-secondary);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.member-card h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-heading);
+}
+
+.member-card .member-role {
+  color: var(--color-accent-primary);
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.member-card .member-interests {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.member-card .member-links a {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 0 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.member-card .member-links a:hover {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.alumni-list {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.alumni-list li {
+  padding: 0.25rem 0;
+}
+
+@media (max-width: 575.98px) {
+  .alumni-list {
+    column-count: 1;
+  }
+}
+
+/* 18. Year headings for publications
+   ============================================ */
+.year-heading {
+  font-family: var(--font-heading);
+  color: var(--color-accent-amber);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--color-border-dim);
+}
+
+/* Publications page h3 year headings */
+.publications-section h3 {
+  font-family: var(--font-heading);
+  color: var(--color-accent-amber);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--color-border-dim);
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.2);
+}
+
+.publications-section h3::before {
+  content: '// ';
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* Thesis section h2 */
+.thesis-section h2 {
+  font-family: var(--font-heading);
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
