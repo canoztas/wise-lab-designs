@@ -23,7 +23,10 @@
       "Bash(git reset:*)",
       "Bash(git commit:*)",
       "Bash(gh repo create:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(for i in 10 11 12 13 14)",
+      "Bash(do cp -r wise.cs.hacettepe.edu.tr design-$i)",
+      "Bash(git push:*)"
     ],
     "additionalDirectories": [
       "\\a"
