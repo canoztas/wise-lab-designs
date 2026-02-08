@@ -1,0 +1,1429 @@
+/* ============================================
+   WISE Lab - Paper Academic / Journal Theme
+   A beautifully typeset academic journal feel
+   ============================================ */
+
+/* 1. CSS Custom Properties (Design Tokens)
+   ============================================ */
+:root {
+  --color-bg-primary: #faf8f3;
+  --color-bg-secondary: #f5f0e8;
+  --color-bg-tertiary: #ffffff;
+  --color-bg-accent: #f0ebe0;
+
+  --color-accent-primary: #c0392b;
+  --color-accent-secondary: #b8860b;
+  --color-accent-glow: rgba(192, 57, 43, 0.08);
+
+  --color-text-primary: #2c2416;
+  --color-text-secondary: #5a4e3c;
+  --color-text-heading: #2c2416;
+  --color-text-accent: #c0392b;
+
+  --color-border: #e8e0d0;
+  --color-border-accent: #d4c9b5;
+
+  --font-body: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  --font-mono: 'Courier New', 'Courier', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --shadow-paper: 0 1px 3px rgba(44, 36, 22, 0.06), 0 2px 8px rgba(44, 36, 22, 0.04);
+  --shadow-paper-hover: 0 2px 6px rgba(44, 36, 22, 0.1), 0 4px 16px rgba(44, 36, 22, 0.06);
+  --shadow-glow: var(--shadow-paper-hover);
+  --header-height: 72px;
+}
+
+/* 2. Reset & Base
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-secondary);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-heading);
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5rem 0;
+}
+
+ul, ol {
+  color: var(--color-text-secondary);
+}
+
+::selection {
+  background: rgba(192, 57, 43, 0.15);
+  color: var(--color-text-primary);
+}
+
+/* Custom Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-accent);
+  border-radius: 5px;
+  border: 2px solid var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8a98c;
+}
+
+/* 3. Header & Navigation
+   ============================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--color-bg-primary);
+  border-bottom: 2px solid var(--color-border);
+  height: var(--header-height);
+  transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+.site-header.scrolled {
+  box-shadow: 0 1px 4px rgba(44, 36, 22, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-wise {
+  height: 40px;
+  width: auto;
+}
+
+.logo-hacettepe {
+  height: 40px;
+  width: auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-text-heading);
+  letter-spacing: 0.02em;
+}
+
+.brand-sub {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+.site-nav .nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.15rem;
+}
+
+.site-nav .nav-link {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.site-nav .nav-link:hover {
+  color: var(--color-accent-primary);
+  background: rgba(192, 57, 43, 0.04);
+}
+
+.nav-link-dropdown {
+  cursor: default;
+}
+
+.nav-link-dropdown i {
+  font-size: 0.6rem;
+  margin-left: 0.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0;
+  min-width: 240px;
+  list-style: none;
+  z-index: 100;
+  box-shadow: var(--shadow-paper-hover);
+}
+
+.nav-dropdown .dropdown-menu.show {
+  display: block;
+}
+
+.nav-dropdown .dropdown-menu li a {
+  display: block;
+  padding: 0.45rem 1.25rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  transition: all var(--transition-fast);
+}
+
+.nav-dropdown .dropdown-menu li a:hover {
+  color: var(--color-accent-primary);
+  background: rgba(192, 57, 43, 0.04);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  gap: 5px;
+  padding: 0;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-secondary);
+  transition: all var(--transition-base);
+}
+
+.nav-toggle span {
+  position: relative;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle span::before {
+  top: -6px;
+}
+
+.nav-toggle span::after {
+  top: 6px;
+}
+
+.nav-toggle.active span {
+  background: transparent;
+}
+
+.nav-toggle.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+  background: var(--color-accent-primary);
+}
+
+.nav-toggle.active span::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background: var(--color-accent-primary);
+}
+
+.logo-link-uni {
+  display: flex;
+  align-items: center;
+}
+
+/* 4. Hero Section (Homepage)
+   ============================================ */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.hero::before {
+  display: none;
+}
+
+.hero::after {
+  display: none;
+}
+
+.hero .container {
+  max-width: 800px;
+}
+
+.hero .row {
+  justify-content: center;
+}
+
+.hero .col-lg-5,
+.hero .col-lg-7 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.hero-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.hero-text {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+}
+
+/* Decorative Divider (used in hero and between sections) */
+.hero-divider,
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem auto;
+  color: var(--color-border-accent);
+  font-size: 0.8rem;
+}
+
+.hero-divider::before,
+.hero-divider::after,
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: var(--color-border-accent);
+}
+
+/* Research Areas Section (hero cards moved below hero) */
+.research-areas {
+  padding: 3.5rem 0;
+  background: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border);
+}
+
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent-secondary);
+  border-radius: var(--radius-sm);
+  padding: 2rem 1.5rem;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.hero-card::before {
+  display: none;
+}
+
+.hero-card:hover,
+.hero-card.active {
+  border-color: var(--color-border-accent);
+  border-top-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-paper-hover);
+  transform: translateY(-2px);
+}
+
+.hero-card:hover::before,
+.hero-card.active::before {
+  display: none;
+}
+
+.hero-card-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-heading);
+}
+
+.hero-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 5. Section Titles
+   ============================================ */
+.section-title {
+  font-family: var(--font-heading);
+  color: var(--color-text-heading);
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  display: inline-block;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--color-accent-primary);
+}
+
+.section-title-center {
+  text-align: center;
+  display: block;
+}
+
+.section-title-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 6. News Section (Homepage)
+   ============================================ */
+.news-section {
+  padding: 4rem 0;
+  background: var(--color-bg-primary);
+}
+
+.news-social {
+  margin-bottom: 1.5rem;
+}
+
+.twitter-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.twitter-follow:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+}
+
+.news-panel {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.news-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-panel::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border-radius: 3px;
+}
+
+.news-panel::-webkit-scrollbar-thumb {
+  background: var(--color-border-accent);
+  border-radius: 3px;
+}
+
+.news-panel::-webkit-scrollbar-thumb:hover {
+  background: #b8a98c;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.25rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-item p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  order: 2;
+}
+
+.news-item .date {
+  color: var(--color-accent-secondary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  order: 1;
+  white-space: nowrap;
+}
+
+/* 7. About Section
+   ============================================ */
+.about-section {
+  padding: 4rem 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-content {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  text-align: justify;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+}
+
+.about-content p::first-letter {
+  font-family: var(--font-heading);
+  font-size: 3.4rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.12em;
+  margin-top: 0.07em;
+  color: var(--color-accent-primary);
+  font-weight: 700;
+}
+
+/* 8. Projects Section (Homepage)
+   ============================================ */
+.projects-section {
+  background: var(--color-bg-primary);
+  padding: 4rem 0;
+}
+
+.project-card {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-paper);
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-paper-hover);
+  transform: translateY(-2px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  filter: saturate(0.6) contrast(0.95);
+  transition: all var(--transition-base);
+}
+
+.project-card:hover img {
+  filter: saturate(0.8) contrast(1);
+}
+
+.project-card-body {
+  padding: 1.25rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-title {
+  margin-bottom: 0.65rem;
+}
+
+.project-card-title a {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition-fast);
+}
+
+.project-card-title a:hover {
+  color: var(--color-accent-primary);
+}
+
+.project-card:hover .project-card-title a {
+  color: var(--color-accent-primary);
+}
+
+.project-card-text {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: justify;
+  flex: 1;
+}
+
+.project-card-text a {
+  color: var(--color-text-secondary);
+}
+
+.project-card:hover .project-card-text a {
+  color: var(--color-text-primary);
+}
+
+/* 9. Project Detail Pages
+   ============================================ */
+.project-hero-banner {
+  background: var(--color-bg-secondary);
+  padding: calc(var(--header-height) + 2rem) 0 2rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.breadcrumb-nav {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.breadcrumb-nav a {
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb-nav a:hover {
+  color: var(--color-accent-primary);
+}
+
+.breadcrumb-nav span {
+  color: var(--color-accent-primary);
+}
+
+.project-page-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-heading);
+}
+
+.project-detail-section {
+  padding: 2.5rem 0;
+}
+
+.project-description {
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+.project-sponsor-badge {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.project-sponsor-badge img {
+  width: 50px;
+  margin-top: 0.5rem;
+}
+
+/* Info Cards (Research Topics, Team, Resources) */
+.info-card {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  height: 100%;
+  box-shadow: var(--shadow-paper);
+}
+
+.info-card-title {
+  color: var(--color-accent-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-card ul li {
+  padding: 0.35rem 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.info-card ul li::before {
+  content: '\2022';
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-accent-secondary);
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+}
+
+.info-card ul li a {
+  color: var(--color-accent-primary);
+}
+
+.info-card ul li a:hover {
+  color: var(--color-accent-secondary);
+}
+
+/* Team Members */
+.project-member {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.member-img-circular {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.project-member:hover .member-img-circular {
+  border-color: var(--color-accent-secondary);
+}
+
+.member-name b {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+.member-name p,
+.member-name .team-text {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 10. Publications
+   ============================================ */
+.publications-section {
+  padding: 2.5rem 0;
+}
+
+.publications-section h3,
+.year-heading {
+  font-family: var(--font-heading);
+  color: var(--color-accent-secondary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.publication-item {
+  padding: 1rem 0 1rem 2rem;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  text-indent: -0.5rem;
+  padding-left: 2.5rem;
+}
+
+.publication-item:last-child {
+  border-bottom: none;
+}
+
+.publication-item .publication-icon {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  color: var(--color-accent-secondary);
+  font-size: 1rem;
+}
+
+.publication-item .publication-title {
+  margin-bottom: 0.25rem;
+  text-indent: 0;
+}
+
+.publication-item .publication-title b,
+.publication-item .publication-title a {
+  color: var(--color-text-heading);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.publication-item .publication-title a:hover {
+  color: var(--color-accent-primary);
+}
+
+.publication-item .publication-content {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  text-indent: 0;
+}
+
+.publication-item .publication-content i {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.publication-item .publication-content a {
+  color: var(--color-text-secondary);
+}
+
+.publication-item .publication-content a:hover {
+  color: var(--color-accent-primary);
+}
+
+.publication-item .publication-content p {
+  margin: 0;
+}
+
+/* 11. Thesis Section
+   ============================================ */
+.thesis-section {
+  padding: 2.5rem 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.thesis-section h2 {
+  font-family: var(--font-heading);
+  font-style: italic;
+}
+
+.thesis-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.thesis-item:last-child {
+  border-bottom: none;
+}
+
+.thesis-item b {
+  color: var(--color-text-heading);
+  font-family: var(--font-body);
+}
+
+.thesis-item p {
+  margin: 0.25rem 0;
+  color: var(--color-text-secondary);
+}
+
+/* 12. Dataset Page
+   ============================================ */
+.dataset-section {
+  padding-top: calc(var(--header-height) + 2rem);
+  padding-bottom: 3rem;
+}
+
+.cite-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent-secondary);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-primary);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+.policy-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.policy-card {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-paper);
+}
+
+.policy-card h5 {
+  color: var(--color-accent-secondary);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.policy-card ol {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+}
+
+.organizations-list {
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.organizations-list ol {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* 13. News Article Page
+   ============================================ */
+.article-section {
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 3rem;
+}
+
+.article-section .article-title {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.article-section p {
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  text-align: justify;
+  font-size: 0.95rem;
+}
+
+.article-section ul,
+.article-section ol {
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+
+.article-section a {
+  color: var(--color-accent-primary);
+}
+
+.article-section a:hover {
+  color: var(--color-accent-secondary);
+}
+
+/* 14. Footer
+   ============================================ */
+.site-footer {
+  background: var(--color-bg-secondary);
+  border-top: 3px double var(--color-border);
+  padding: 3rem 0 1.5rem;
+  margin-top: 0;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-title {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.footer-address {
+  color: var(--color-text-secondary);
+  font-style: normal;
+  line-height: 1.8;
+  font-size: 0.9rem;
+}
+
+.footer-address i {
+  color: var(--color-accent-secondary);
+  width: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.footer-address a {
+  color: var(--color-accent-primary);
+}
+
+.footer-address a:hover {
+  color: var(--color-accent-secondary);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  padding-top: 2.5rem;
+}
+
+.footer-social a {
+  color: var(--color-text-secondary);
+  font-size: 1.4rem;
+  transition: all var(--transition-base);
+}
+
+.footer-social a:hover {
+  color: var(--color-accent-primary);
+}
+
+.footer-copy {
+  padding-top: 2.5rem;
+  text-align: right;
+}
+
+.footer-copy p {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* 15. Responsive
+   ============================================ */
+@media (max-width: 991.98px) {
+  .hero-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: calc(var(--header-height) + 2rem) 0 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-nav.active {
+    display: block;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: rgba(250, 248, 243, 0.98);
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 12px rgba(44, 36, 22, 0.08);
+  }
+
+  .site-nav.active .nav-list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav.active .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .site-nav.active .dropdown-menu {
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+
+  .site-nav.active .dropdown-menu.show {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .footer-copy {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .policy-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .organizations-list {
+    columns: 1;
+  }
+
+  .news-item {
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .news-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .news-item .date {
+    order: -1;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .header-brand .brand-text {
+    display: none;
+  }
+
+  .logo-link-uni {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .project-page-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* 16. People Page
+   ============================================ */
+.people-section {
+  padding: 2.5rem 0;
+}
+
+.people-section .section-title {
+  margin-top: 1.5rem;
+}
+
+.member-card {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-paper);
+}
+
+.member-card:hover {
+  box-shadow: var(--shadow-paper-hover);
+  transform: translateY(-2px);
+}
+
+.member-card .member-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  margin-bottom: 1rem;
+  transition: all var(--transition-base);
+}
+
+.member-card:hover .member-photo {
+  border-color: var(--color-accent-secondary);
+  filter: sepia(0.1) saturate(0.9);
+}
+
+.member-card .member-placeholder {
+  font-size: 3.5rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.member-card h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-text-heading);
+}
+
+.member-card .member-role {
+  color: var(--color-accent-secondary);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.member-card .member-interests {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.member-card .member-links a {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 0 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.member-card .member-links a:hover {
+  color: var(--color-accent-primary);
+}
+
+.alumni-list {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.alumni-list li {
+  padding: 0.25rem 0;
+}
+
+@media (max-width: 575.98px) {
+  .alumni-list {
+    column-count: 1;
+  }
+}
+
+/* 17. Year headings for publications
+   ============================================ */
+/* Already handled in section 10 above */
+
+/* 18. Decorative Elements
+   ============================================ */
+
+/* Thin decorative divider with diamond - used between homepage sections */
+.decorative-divider {
+  text-align: center;
+  padding: 2rem 0;
+  line-height: 1;
+}
+
+.decorative-divider::before {
+  content: '\2014\2014  \25C6  \2014\2014';
+  color: var(--color-border-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+
+/* Drop cap for about section */
+.about-drop-cap::first-letter {
+  font-family: var(--font-heading);
+  font-size: 3.4rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.12em;
+  margin-top: 0.07em;
+  color: var(--color-accent-primary);
+  font-weight: 700;
+}
+
+/* 19. Print-friendly adjustments
+   ============================================ */
+@media print {
+  .site-header,
+  .nav-toggle,
+  .footer-social {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .hero {
+    padding-top: 1rem;
+  }
+}

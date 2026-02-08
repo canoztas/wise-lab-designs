@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wise.cs.hacettepe.edu.tr)",
+      "Bash(curl:*)",
+      "Bash(xcopy:*)",
+      "Bash(for file in index.html people/index.html publications/index.html news/index.html projects/co-evolution.html projects/updroid.html projects/secure-protocols.html projects/updroid/index.html projects/updroid/dataset.html)",
+      "Bash(do cp \"d:/Projects/wise.cs.lab/wise.cs.hacettepe.edu.tr/$file\" \"d:/Projects/wise.cs.lab/design-2/$file\")",
+      "Bash(done)",
+      "Bash(do cp \"d:/Projects/wise.cs.lab/wise.cs.hacettepe.edu.tr/$file\" \"d:/Projects/wise.cs.lab/design-3/$file\")",
+      "Bash(do cp \"d:/Projects/wise.cs.lab/wise.cs.hacettepe.edu.tr/$file\" \"d:/Projects/wise.cs.lab/design-4/$file\")",
+      "Bash(find:*)",
+      "Bash(for f in people/index.html publications/index.html news/index.html)",
+      "Bash(do sed -i 's|<li><a href=\"\"../projects/secure-protocols.html\"\">Secure Protocols in IoT</a></li>|<li><a href=\"\"../projects/secure-protocols.html\"\">Secure Protocols in IoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../projects/coiot.html\"\">CoIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../projects/detecting-intrusions.html\"\">Detecting Intrusions in IIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../projects/desre.html\"\">DeSRe</a></li>|' \"$f\")",
+      "Bash(for f in co-evolution.html updroid.html secure-protocols.html)",
+      "Bash(do sed -i 's|<li><a href=\"\"secure-protocols.html\"\">Secure Protocols in IoT</a></li>|<li><a href=\"\"secure-protocols.html\"\">Secure Protocols in IoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"coiot.html\"\">CoIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"detecting-intrusions.html\"\">Detecting Intrusions in IIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"desre.html\"\">DeSRe</a></li>|' \"$f\")",
+      "Bash(for f in index.html dataset.html)",
+      "Bash(do sed -i 's|<li><a href=\"\"../secure-protocols.html\"\">Secure Protocols in IoT</a></li>|<li><a href=\"\"../secure-protocols.html\"\">Secure Protocols in IoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../coiot.html\"\">CoIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../detecting-intrusions.html\"\">Detecting Intrusions in IIoT</a></li>\\\\n\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t\\\\t<li><a href=\"\"../desre.html\"\">DeSRe</a></li>|' \"$f\")",
+      "Bash(grep:*)",
+      "Bash(gh auth:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)"
+    ],
+    "additionalDirectories": [
+      "\\a"
+    ]
+  }
+}

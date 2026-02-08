@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WISE Lab - Design Proposals</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		body {
+			font-family: 'Inter', system-ui, sans-serif;
+			background: #0f0f14;
+			color: #e0e0e8;
+			min-height: 100vh;
+		}
+		.header {
+			text-align: center;
+			padding: 3rem 1.5rem 2rem;
+			border-bottom: 1px solid rgba(255,255,255,0.06);
+		}
+		.header h1 {
+			font-size: 2rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			letter-spacing: 0.02em;
+		}
+		.header p {
+			color: #888;
+			font-size: 1rem;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 1.5rem;
+			max-width: 1200px;
+			margin: 2.5rem auto;
+			padding: 0 1.5rem;
+		}
+		.card {
+			background: #1a1a24;
+			border: 1px solid rgba(255,255,255,0.06);
+			border-radius: 12px;
+			overflow: hidden;
+			transition: all 0.25s ease;
+			text-decoration: none;
+			color: inherit;
+			display: block;
+		}
+		.card:hover {
+			border-color: rgba(255,255,255,0.15);
+			transform: translateY(-4px);
+			box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+		}
+		.card-color {
+			height: 8px;
+		}
+		.card-body {
+			padding: 1.5rem;
+		}
+		.card-number {
+			font-size: 0.7rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: #666;
+			margin-bottom: 0.5rem;
+		}
+		.card-title {
+			font-size: 1.25rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+		}
+		.card-desc {
+			font-size: 0.85rem;
+			color: #888;
+			line-height: 1.6;
+			margin-bottom: 1rem;
+		}
+		.card-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.4rem;
+		}
+		.tag {
+			font-size: 0.7rem;
+			padding: 0.2rem 0.6rem;
+			border-radius: 20px;
+			background: rgba(255,255,255,0.05);
+			color: #aaa;
+			border: 1px solid rgba(255,255,255,0.08);
+		}
+		.footer {
+			text-align: center;
+			padding: 2rem;
+			color: #555;
+			font-size: 0.8rem;
+			border-top: 1px solid rgba(255,255,255,0.06);
+			margin-top: 2rem;
+		}
+
+		/* Color bars per design */
+		.c1 { background: linear-gradient(90deg, #00d4aa, #0ea5e9); }
+		.c2 { background: linear-gradient(90deg, #d4a853, #a78bfa); }
+		.c3 { background: linear-gradient(90deg, #2563eb, #7c3aed); }
+		.c4 { background: linear-gradient(90deg, #00a8ff, #ff2d7b, #7c3aed); }
+		.c5 { background: linear-gradient(90deg, #22d3a8, #8b5cf6, #38bdf8); }
+		.c6 { background: linear-gradient(90deg, #ff0000, #ffd600); }
+		.c7 { background: linear-gradient(90deg, #ff2d95, #ff6b2b, #ffd319); }
+		.c8 { background: linear-gradient(90deg, #c0392b, #b8860b); }
+	</style>
+</head>
+<body>
+
+	<div class="header">
+		<h1>WISE Lab - Website Design Proposals</h1>
+		<p>8 unique design variants for the WISE Lab website. Click any design to preview it live.</p>
+	</div>
+
+	<div class="grid">
+
+		<a href="design-1/" class="card">
+			<div class="card-color c1"></div>
+			<div class="card-body">
+				<div class="card-number">Design 1</div>
+				<div class="card-title">Dark Cyber</div>
+				<div class="card-desc">Navy background with teal-cyan accents, glassmorphism header, animated grid pattern, glowing cards on hover.</div>
+				<div class="card-tags">
+					<span class="tag">Dark</span>
+					<span class="tag">Space Grotesk</span>
+					<span class="tag">Glassmorphism</span>
+					<span class="tag">Glow Effects</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-2/" class="card">
+			<div class="card-color c2"></div>
+			<div class="card-body">
+				<div class="card-number">Design 2</div>
+				<div class="card-title">Royal Luxury</div>
+				<div class="card-desc">Deep purple background with gold accents, elegant serif typography, two-row centered header, horizontal member cards.</div>
+				<div class="card-tags">
+					<span class="tag">Dark</span>
+					<span class="tag">Playfair Display</span>
+					<span class="tag">Serif</span>
+					<span class="tag">Gold Accents</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-3/" class="card">
+			<div class="card-color c3"></div>
+			<div class="card-body">
+				<div class="card-number">Design 3</div>
+				<div class="card-title">Minimalist Light</div>
+				<div class="card-desc">Clean white theme with blue-purple accents, dot-grid pattern, stat counters, icon-only project cards, minimal footer.</div>
+				<div class="card-tags">
+					<span class="tag">Light</span>
+					<span class="tag">DM Sans</span>
+					<span class="tag">Minimalist</span>
+					<span class="tag">Clean</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-4/" class="card">
+			<div class="card-color c4"></div>
+			<div class="card-body">
+				<div class="card-number">Design 4</div>
+				<div class="card-title">Cyber Neon</div>
+				<div class="card-desc">Pure black with electric blue and hot magenta, sharp zero-radius corners, neon gradient lines, side-by-side news layout.</div>
+				<div class="card-tags">
+					<span class="tag">Dark</span>
+					<span class="tag">Rajdhani</span>
+					<span class="tag">Sharp Edges</span>
+					<span class="tag">Neon</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-5/" class="card">
+			<div class="card-color c5"></div>
+			<div class="card-body">
+				<div class="card-number">Design 5</div>
+				<div class="card-title">Arctic Aurora</div>
+				<div class="card-desc">Icy light blue-gray with frosted glass cards, aurora green and purple gradients, soft shadows, quick stats bar.</div>
+				<div class="card-tags">
+					<span class="tag">Light</span>
+					<span class="tag">Outfit</span>
+					<span class="tag">Frosted Glass</span>
+					<span class="tag">Aurora</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-6/" class="card">
+			<div class="card-color c6"></div>
+			<div class="card-body">
+				<div class="card-number">Design 6</div>
+				<div class="card-title">Brutalist</div>
+				<div class="card-desc">Stark white with pure black and electric red. Massive typography, thick borders, inverted hover effects. Raw and bold.</div>
+				<div class="card-tags">
+					<span class="tag">Light</span>
+					<span class="tag">Bebas Neue</span>
+					<span class="tag">Monospace</span>
+					<span class="tag">Anti-Design</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-7/" class="card">
+			<div class="card-color c7"></div>
+			<div class="card-body">
+				<div class="card-number">Design 7</div>
+				<div class="card-title">Synthwave</div>
+				<div class="card-desc">80s retro-futuristic with sunset gradients (pink to orange to yellow), perspective grid, neon glow effects, chrome title.</div>
+				<div class="card-tags">
+					<span class="tag">Dark</span>
+					<span class="tag">Orbitron</span>
+					<span class="tag">Retro 80s</span>
+					<span class="tag">Neon Glow</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="design-8/" class="card">
+			<div class="card-color c8"></div>
+			<div class="card-body">
+				<div class="card-number">Design 8</div>
+				<div class="card-title">Paper Academic</div>
+				<div class="card-desc">Warm cream parchment with elegant serif typography, newspaper-style layout, decorative dividers, drop caps. Classic journal feel.</div>
+				<div class="card-tags">
+					<span class="tag">Light</span>
+					<span class="tag">Playfair Display</span>
+					<span class="tag">Serif</span>
+					<span class="tag">Academic</span>
+				</div>
+			</div>
+		</a>
+
+	</div>
+
+	<div class="footer">
+		WISE Lab &mdash; Hacettepe University, Department of Computer Engineering
+	</div>
+
+</body>
+</html>
