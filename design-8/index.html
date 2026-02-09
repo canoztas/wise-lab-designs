@@ -28,6 +28,15 @@
 	<header class="masthead" id="site-header">
 		<div class="container">
 			<div class="decorative-rule"></div>
+			<div class="masthead-logos">
+				<a href="index.html" class="logo-link">
+					<img src="images/wise_logo.png" alt="WISE Lab" class="logo-wise-masthead">
+				</a>
+				<a href="https://www.hacettepe.edu.tr" target="_blank" rel="noopener" class="logo-link">
+					<img src="images/hacettepe.gif" alt="Hacettepe University" class="logo-hacettepe-masthead">
+				</a>
+			</div>
+			<div class="decorative-rule"></div>
 			<div class="masthead-university">Hacettepe University &bull; Department of Computer Engineering</div>
 			<div class="decorative-rule"></div>
 			<h1 class="masthead-title">WISE LAB</h1>
@@ -35,6 +44,9 @@
 			<p class="masthead-subtitle">Est. 2015 &mdash; Wireless Networks &amp; Intelligent Secure Systems</p>
 
 			<div class="decorative-rule"></div>
+			<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+				<span></span>
+			</button>
 			<nav class="masthead-nav" id="site-nav">
 				<a href="index.html" class="nav-link">Home</a>
 				<span class="nav-dot">&bull;</span>
@@ -42,17 +54,17 @@
 				<span class="nav-dot">&bull;</span>
 				<a href="publications/" class="nav-link">Publications</a>
 				<span class="nav-dot">&bull;</span>
-				<a href="projects/co-evolution.html" class="nav-link">Co-Evolution of Malware</a>
-				<span class="nav-dot">&bull;</span>
-				<a href="projects/updroid.html" class="nav-link">UpDroid</a>
-				<span class="nav-dot">&bull;</span>
-				<a href="projects/secure-protocols.html" class="nav-link">Secure Protocols in IoT</a>
-				<span class="nav-dot">&bull;</span>
-				<a href="projects/coiot.html" class="nav-link">CoIoT</a>
-				<span class="nav-dot">&bull;</span>
-				<a href="projects/detecting-intrusions.html" class="nav-link">Detecting Intrusions in IIoT</a>
-				<span class="nav-dot">&bull;</span>
-				<a href="projects/desre.html" class="nav-link">DeSRe</a>
+				<div class="nav-dropdown">
+					<a href="#" class="nav-link nav-link-dropdown">Projects <i class="fa-solid fa-chevron-down"></i></a>
+					<div class="dropdown-menu">
+						<a href="projects/co-evolution.html">Co-Evolution of Malware</a>
+						<a href="projects/updroid.html">UpDroid</a>
+						<a href="projects/secure-protocols.html">Secure Protocols in IoT</a>
+						<a href="projects/coiot.html">CoIoT</a>
+						<a href="projects/detecting-intrusions.html">Detecting Intrusions in IIoT</a>
+						<a href="projects/desre.html">DeSRe</a>
+					</div>
+				</div>
 				<span class="nav-dot">&bull;</span>
 				<a href="#footer" class="nav-link">Contact</a>
 			</nav>

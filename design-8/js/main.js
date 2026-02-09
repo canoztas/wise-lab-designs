@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile navigation toggle
   const navToggle = document.querySelector('.nav-toggle');
-  const siteNav = document.querySelector('.site-nav');
+  const siteNav = document.querySelector('.site-nav') || document.querySelector('.masthead-nav');
 
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', () => {
@@ -19,15 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = dropdown.querySelector('.dropdown-menu');
     if (!menu) return;
 
-    // Desktop: hover
-    dropdown.addEventListener('mouseenter', () => menu.classList.add('show'));
-    dropdown.addEventListener('mouseleave', () => menu.classList.remove('show'));
-
-    // Mobile: click
+    // Mobile: click to toggle dropdown and parent
     if (link) {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        menu.classList.toggle('show');
+        dropdown.classList.toggle('active');
       });
     }
   });

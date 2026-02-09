@@ -1427,3 +1427,181 @@ ul, ol {
     padding-top: 1rem;
   }
 }
+
+/* Masthead Logo Additions
+   ============================================ */
+.masthead-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.logo-wise-masthead {
+  height: 60px;
+  width: auto;
+}
+
+.logo-hacettepe-masthead {
+  height: 60px;
+  width: auto;
+}
+
+/* Navigation Toggle Button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 2px solid var(--color-border);
+  padding: 0.5rem;
+  cursor: pointer;
+  margin: 1rem auto;
+  position: relative;
+  width: 40px;
+  height: 32px;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  display: block;
+  background: var(--color-text-primary);
+  height: 2px;
+  width: 24px;
+  position: absolute;
+  left: 6px;
+  transition: all var(--transition-base);
+}
+
+.nav-toggle span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: '';
+  left: 0;
+}
+
+.nav-toggle span::before {
+  top: -8px;
+}
+
+.nav-toggle span::after {
+  bottom: -8px;
+}
+
+.nav-toggle[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+/* Dropdown Menu */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0;
+  min-width: 250px;
+  margin-top: 0.5rem;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.dropdown-menu a:hover {
+  background: var(--color-bg-accent);
+  color: var(--color-accent-primary);
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* Responsive Navigation */
+@media (max-width: 991.98px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .masthead-nav {
+    display: none;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .masthead-nav.active {
+    display: flex !important;
+  }
+
+  .masthead-nav .nav-dot {
+    display: none;
+  }
+
+  .masthead-nav .nav-link {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    display: none;
+    border: none;
+    padding: 0.5rem 0 0.5rem 1rem;
+    background: transparent;
+  }
+
+  .nav-dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .masthead-logos {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .logo-wise-masthead,
+  .logo-hacettepe-masthead {
+    height: 50px;
+  }
+
+  .masthead-title {
+    font-size: 2.5rem;
+  }
+}
