@@ -1461,3 +1461,389 @@ ul, ol {
   color: var(--color-accent-primary) !important;
   text-shadow: 0 0 10px rgba(252, 227, 0, 0.4);
 }
+
+/* 20. Cyberpunk Unique Layout Structures
+   ============================================ */
+
+/* Angled Header with Skewed Background */
+.angled-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg-secondary);
+  transform: skewY(-1deg);
+  transform-origin: top left;
+  z-index: -1;
+}
+
+.angled-header {
+  position: relative;
+  overflow: visible;
+}
+
+/* Glitch Title with Chromatic Aberration */
+.glitch-title {
+  position: relative;
+  text-shadow:
+    2px 0 0 var(--color-accent-secondary),
+    -2px 0 0 var(--color-accent-cyan);
+  animation: glitch-shift 3s ease-in-out infinite;
+}
+
+@keyframes glitch-shift {
+  0%, 100% {
+    text-shadow:
+      2px 0 0 var(--color-accent-secondary),
+      -2px 0 0 var(--color-accent-cyan);
+  }
+  50% {
+    text-shadow:
+      -2px 0 0 var(--color-accent-secondary),
+      2px 0 0 var(--color-accent-cyan);
+  }
+}
+
+/* Angular Nav Links */
+.angular-nav-link {
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  padding: 0.5rem 1.2rem !important;
+  background: var(--color-bg-tertiary);
+  margin: 0 0.25rem;
+}
+
+/* Asymmetric Hero */
+.hero-asymmetric {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 4rem;
+}
+
+.diagonal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(252, 227, 0, 0.02) 10px,
+    rgba(252, 227, 0, 0.02) 20px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-asymmetric .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Text Stack */
+.hero-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-word {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-text-heading);
+  letter-spacing: 0.05em;
+}
+
+.hero-word-amp {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--color-accent-primary);
+  text-align: center;
+  margin: 0.25rem 0;
+}
+
+.hero-text-small {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* HUD Panels with Clipped Corners */
+.hud-panels {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hud-panel {
+  position: relative;
+  background: var(--color-bg-secondary);
+  padding: 1.5rem;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  border: 1px solid var(--color-border-accent);
+  transition: all var(--transition-base);
+}
+
+.hud-panel:hover {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateX(5px);
+}
+
+.hud-label {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hud-panel h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.hud-panel p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Data Block (Corrupted Style) */
+.data-block {
+  padding: 3rem 0;
+  position: relative;
+}
+
+.data-block-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-bg-secondary);
+  padding: 2.5rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 30px) 0,
+    100% 30px,
+    100% calc(100% - 30px),
+    calc(100% - 30px) 100%,
+    30px 100%,
+    0 calc(100% - 30px)
+  );
+  border: 2px solid var(--color-border-accent);
+  position: relative;
+}
+
+.data-block-inner::before,
+.data-block-inner::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent-secondary);
+}
+
+.data-block-inner::before {
+  top: 1rem;
+  left: 2rem;
+}
+
+.data-block-inner::after {
+  bottom: 1rem;
+  right: 2rem;
+  background: var(--color-accent-cyan);
+}
+
+/* HUD Readout (News Panels) */
+.hud-readout {
+  position: relative;
+  background: var(--color-bg-secondary);
+  padding: 1.25rem;
+  padding-left: 3.5rem;
+  border-left: 3px solid var(--color-accent-primary);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.hud-readout:hover {
+  background: var(--color-bg-tertiary);
+  border-left-color: var(--color-accent-cyan);
+}
+
+.hud-rec {
+  position: absolute;
+  left: 1rem;
+  top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.hud-readout p {
+  margin: 0 0 0.5rem;
+}
+
+.hud-readout .date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-cyan);
+  margin: 0;
+}
+
+/* Angular Cards (Projects) */
+.angular-card {
+  position: relative;
+  background: var(--color-bg-secondary);
+  clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 0 100%);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.angular-card:hover {
+  border-color: var(--color-accent-primary);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+}
+
+.project-stamp {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-accent-primary);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.3rem 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  z-index: 10;
+  border: 1px solid var(--color-accent-primary);
+}
+
+.angular-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 25px 25px 0;
+  border-color: transparent var(--color-accent-primary) transparent transparent;
+  opacity: 0.3;
+}
+
+.angular-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: grayscale(40%);
+  transition: filter var(--transition-base);
+}
+
+.angular-card:hover img {
+  filter: grayscale(0%);
+}
+
+.access-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-accent-cyan);
+  transition: all var(--transition-fast);
+}
+
+.access-link:hover {
+  background: var(--color-accent-cyan);
+  color: #000;
+  transform: translateX(5px);
+}
+
+/* Glitch Footer */
+.glitch-footer {
+  position: relative;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.glitch-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 15px,
+    rgba(252, 227, 0, 0.03) 15px,
+    rgba(252, 227, 0, 0.03) 30px
+  );
+  pointer-events: none;
+}
+
+.glitch-footer .footer-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.glitch-footer .footer-copy p {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .hero-word {
+    font-size: 2rem;
+  }
+
+  .hud-panel {
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
+  }
+
+  .angular-card {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .angular-nav-link {
+    clip-path: none;
+    margin: 0;
+  }
+
+  .data-block-inner {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 20px) 0,
+      100% 20px,
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .hero-text-stack {
+    text-align: center;
+  }
+}

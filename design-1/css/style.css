@@ -36,6 +36,7 @@
 
   --shadow-glow: 0 0 20px var(--color-accent-glow);
   --header-height: 72px;
+  --top-bar-height: 36px;
 }
 
 /* 2. Reset & Base
@@ -86,11 +87,72 @@ ul, ol {
   color: var(--color-text-secondary);
 }
 
+/* 2b. Top Bar
+   ============================================ */
+.top-bar {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--top-bar-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.top-bar-uni {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.top-bar-uni i {
+  color: var(--color-accent-primary);
+  margin-right: 0.35rem;
+}
+
+.top-bar-contact {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.top-bar-contact span {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.top-bar-contact i {
+  color: var(--color-accent-primary);
+  margin-right: 0.3rem;
+  font-size: 0.7rem;
+}
+
+.top-bar-contact a {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.top-bar-contact a:hover {
+  color: var(--color-accent-primary);
+}
+
 /* 3. Header & Navigation
    ============================================ */
 .site-header {
   position: fixed;
-  top: 0;
+  top: var(--top-bar-height);
   left: 0;
   right: 0;
   z-index: 1000;
@@ -282,7 +344,7 @@ ul, ol {
   align-items: center;
 }
 
-/* 4. Hero Section (Homepage)
+/* 4. Hero Section (Homepage) - Split Layout
    ============================================ */
 .hero {
   position: relative;
@@ -291,7 +353,7 @@ ul, ol {
   align-items: center;
   background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-accent) 100%);
   overflow: hidden;
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + var(--top-bar-height));
   padding-bottom: 3rem;
 }
 
@@ -326,7 +388,7 @@ ul, ol {
 .hero-content {
   position: relative;
   z-index: 2;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .hero-title {
@@ -351,6 +413,59 @@ ul, ol {
   font-size: 0.9rem;
 }
 
+/* Hero Stat Boxes */
+.hero-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-border-accent);
+  border-radius: var(--radius-md);
+  background: rgba(0, 212, 170, 0.04);
+  min-width: 100px;
+  transition: all var(--transition-base);
+}
+
+.stat-box:hover {
+  background: rgba(0, 212, 170, 0.08);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hero Cards - Stacked Vertical */
+.hero-cards-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Keep old .hero-cards for backward compat on other pages */
 .hero-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -412,6 +527,30 @@ ul, ol {
   line-height: 1.5;
 }
 
+/* In stacked layout, make cards more horizontal */
+.hero-cards-stacked .hero-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.hero-cards-stacked .hero-card-icon {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.hero-cards-stacked .hero-card h2 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.hero-cards-stacked .hero-card p {
+  font-size: 0.8rem;
+}
+
 /* 5. Section Titles
    ============================================ */
 .section-title {
@@ -432,7 +571,7 @@ ul, ol {
   display: block;
 }
 
-/* 6. News Section (Homepage)
+/* 6. News Section - Vertical Timeline
    ============================================ */
 .news-section {
   padding: 4rem 0;
@@ -460,6 +599,103 @@ ul, ol {
   color: var(--color-accent-primary);
 }
 
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* The central vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--color-border-accent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 2.5rem 2.5rem;
+}
+
+/* Right-aligned items */
+.timeline-item.timeline-right {
+  left: 50%;
+  padding-left: 2.5rem;
+  padding-right: 0;
+}
+
+/* Left-aligned items */
+.timeline-item.timeline-left {
+  left: 0;
+  padding-right: 2.5rem;
+  padding-left: 0;
+}
+
+/* Timeline dot on the line */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  border: 2px solid var(--color-bg-primary);
+  box-shadow: 0 0 8px var(--color-accent-glow);
+  z-index: 2;
+}
+
+.timeline-item.timeline-right::before {
+  left: -6px;
+}
+
+.timeline-item.timeline-left::before {
+  right: -6px;
+}
+
+/* Timeline Date Badge */
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.timeline-item.timeline-left .timeline-date {
+  text-align: right;
+}
+
+/* Timeline Card */
+.timeline-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  transition: all var(--transition-base);
+}
+
+.timeline-card:hover {
+  border-color: var(--color-border-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.timeline-card p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Keep old news-panel styles for backward compat */
 .news-panel {
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
@@ -506,8 +742,16 @@ ul, ol {
   letter-spacing: 0.05em;
 }
 
-/* 7. About Section
+/* 7. About Banner (Full-Width)
    ============================================ */
+.about-banner {
+  padding: 3.5rem 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Keep old about-section for backward compat */
 .about-section {
   padding: 4rem 0;
 }
@@ -525,7 +769,7 @@ ul, ol {
   font-size: 1.05rem;
 }
 
-/* 8. Projects Section (Homepage)
+/* 8. Projects Section (Homepage) - 3-Column with Featured
    ============================================ */
 .projects-section {
   background: var(--color-bg-secondary);
@@ -563,6 +807,11 @@ ul, ol {
   filter: brightness(0.9) saturate(1);
 }
 
+/* Featured project card (spans 2 columns) */
+.project-card-featured img {
+  height: 260px;
+}
+
 .project-card-body {
   padding: 1.5rem;
   flex: 1;
@@ -587,6 +836,10 @@ ul, ol {
   color: var(--color-accent-primary);
 }
 
+.project-card-featured .project-card-title a {
+  font-size: 1.15rem;
+}
+
 .project-card-text {
   color: var(--color-text-secondary);
   font-size: 0.85rem;
@@ -607,7 +860,7 @@ ul, ol {
    ============================================ */
 .project-hero-banner {
   background: linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-accent));
-  padding: calc(var(--header-height) + 2rem) 0 2rem;
+  padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 0 2rem;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -827,7 +1080,7 @@ ul, ol {
 /* 12. Dataset Page
    ============================================ */
 .dataset-section {
-  padding-top: calc(var(--header-height) + 2rem);
+  padding-top: calc(var(--header-height) + var(--top-bar-height) + 2rem);
   padding-bottom: 3rem;
 }
 
@@ -884,7 +1137,7 @@ ul, ol {
 /* 13. News Article Page
    ============================================ */
 .article-section {
-  padding-top: calc(var(--header-height) + 3rem);
+  padding-top: calc(var(--header-height) + var(--top-bar-height) + 3rem);
   padding-bottom: 3rem;
 }
 
@@ -913,7 +1166,7 @@ ul, ol {
   color: var(--color-accent-primary);
 }
 
-/* 14. Footer
+/* 14. Footer - 3-Column Grid
    ============================================ */
 .site-footer {
   background: var(--color-bg-secondary);
@@ -922,11 +1175,8 @@ ul, ol {
   margin-top: 3rem;
 }
 
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 2rem;
-  align-items: start;
+.footer-grid {
+  padding-bottom: 2rem;
 }
 
 .footer-title {
@@ -953,6 +1203,79 @@ ul, ol {
   color: var(--color-accent-primary);
 }
 
+/* Footer Quick Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  padding: 0.3rem 0;
+}
+
+.footer-links li a {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.footer-links li a:hover {
+  color: var(--color-accent-primary);
+}
+
+.footer-links li a i {
+  font-size: 0.6rem;
+  margin-right: 0.5rem;
+  color: var(--color-accent-primary);
+}
+
+/* Footer Social Column */
+.footer-social-column {
+  margin-bottom: 1.5rem;
+}
+
+.footer-social-column a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  transition: all var(--transition-base);
+}
+
+.footer-social-column a i {
+  font-size: 1.25rem;
+}
+
+.footer-social-column a:hover {
+  color: var(--color-accent-primary);
+}
+
+/* Footer University Logo */
+.footer-uni-logo {
+  margin-top: 0.5rem;
+}
+
+.footer-uni-logo img {
+  height: 50px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+}
+
+.footer-uni-logo img:hover {
+  opacity: 1;
+}
+
+/* Keep old footer-inner for backward compat on other pages */
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 2rem;
+  align-items: start;
+}
+
 .footer-social {
   display: flex;
   align-items: center;
@@ -971,8 +1294,9 @@ ul, ol {
 }
 
 .footer-copy {
-  padding-top: 2.5rem;
-  text-align: right;
+  padding-top: 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-copy p {
@@ -992,11 +1316,15 @@ ul, ol {
 
   .hero {
     min-height: auto;
-    padding: calc(var(--header-height) + 2rem) 0 2rem;
+    padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 0 2rem;
   }
 
   .hero-title {
     font-size: 2.25rem;
+  }
+
+  .hero-content {
+    margin-bottom: 2rem;
   }
 
   .site-nav {
@@ -1006,7 +1334,7 @@ ul, ol {
   .site-nav.active {
     display: block;
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + var(--top-bar-height));
     left: 0;
     right: 0;
     background: rgba(10, 15, 26, 0.98);
@@ -1052,7 +1380,39 @@ ul, ol {
 
   .footer-copy {
     text-align: center;
-    padding-top: 0;
+    padding-top: 1.5rem;
+  }
+
+  /* Timeline responsive: single column */
+  .timeline::before {
+    left: 1rem;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 0;
+  }
+
+  .timeline-item.timeline-right {
+    left: 0;
+    padding-left: 3rem;
+    padding-right: 0;
+  }
+
+  .timeline-item.timeline-left {
+    left: 0;
+    padding-left: 3rem;
+    padding-right: 0;
+  }
+
+  .timeline-item::before {
+    left: 4px !important;
+    right: auto !important;
+  }
+
+  .timeline-item.timeline-left .timeline-date {
+    text-align: left;
   }
 
   .policy-columns {
@@ -1061,6 +1421,34 @@ ul, ol {
 
   .organizations-list {
     columns: 1;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .stat-box {
+    min-width: 80px;
+    padding: 0.6rem 1rem;
+  }
+
+  .footer-grid {
+    text-align: center;
+  }
+
+  .footer-links {
+    text-align: center;
+  }
+
+  .footer-social-column {
+    text-align: center;
+  }
+
+  .footer-uni-logo {
+    text-align: center;
   }
 }
 
@@ -1082,6 +1470,31 @@ ul, ol {
   }
 
   .section-title {
+    font-size: 1.25rem;
+  }
+
+  /* Top bar: stack on very small screens */
+  .top-bar {
+    height: auto;
+    padding: 0.35rem 0;
+  }
+
+  .top-bar-inner {
+    flex-direction: column;
+    gap: 0.15rem;
+    text-align: center;
+  }
+
+  .top-bar-contact {
+    gap: 0.75rem;
+  }
+
+  .stat-box {
+    min-width: 70px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .stat-number {
     font-size: 1.25rem;
   }
 }

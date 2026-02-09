@@ -88,7 +88,587 @@ ul, ol {
   color: var(--color-white);
 }
 
-/* 3. Header & Navigation
+/* 3. Brutal Header - Massive Black Bar
+   ============================================ */
+.brutal-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--color-black);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-bottom: none;
+}
+
+.brutal-header-logo {
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brutal-header-logo:hover {
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+.brutal-nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 2px solid var(--color-white);
+  cursor: pointer;
+  gap: 6px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.brutal-nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--color-white);
+  transition: all 0.2s ease;
+}
+
+.brutal-nav-toggle.active {
+  border-color: var(--color-red);
+}
+
+.brutal-nav-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  background: var(--color-red);
+}
+
+.brutal-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.brutal-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  background: var(--color-red);
+}
+
+/* 3b. Full-Screen Overlay Navigation
+   ============================================ */
+.overlay-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay-nav.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.overlay-nav-list > li {
+  margin-bottom: 0.5rem;
+}
+
+.overlay-nav-link {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  transition: color 0.1s ease;
+  display: inline-block;
+}
+
+.overlay-nav-link:hover {
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+.overlay-nav-link-dropdown i {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.overlay-dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.overlay-dropdown-menu.show {
+  max-height: 500px;
+}
+
+.overlay-dropdown-menu li a {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  padding: 0.4rem 0;
+  opacity: 0.7;
+  transition: opacity 0.1s ease, color 0.1s ease;
+}
+
+.overlay-dropdown-menu li a:hover {
+  opacity: 1;
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+/* 4. Hero - Full-Screen Typographic
+   ============================================ */
+.hero-typographic {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(var(--header-height) + 2rem) 2rem 2rem;
+  background: var(--color-white);
+  border-bottom: var(--border-thicker);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-typographic-words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.hero-word {
+  font-family: var(--font-heading);
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  display: block;
+}
+
+.hero-word-1 {
+  font-size: 6rem;
+}
+
+.hero-word-2 {
+  font-size: 7.5rem;
+}
+
+.hero-word-3 {
+  font-size: 5rem;
+  color: var(--color-red);
+}
+
+.hero-word-4 {
+  font-size: 9rem;
+}
+
+.hero-word-5 {
+  font-size: 10.5rem;
+}
+
+.hero-word-6 {
+  font-size: 12rem;
+}
+
+.hero-typographic-uni {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+/* 5. Marquee/Ticker Strip - Research Areas
+   ============================================ */
+.marquee-strip {
+  border-top: 4px solid var(--color-black);
+  border-bottom: 4px solid var(--color-black);
+  background: var(--color-yellow);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee-content {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding-right: 2rem;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 6. About Block - Thick-bordered text block
+   ============================================ */
+.about-block {
+  border: 4px solid var(--color-black);
+  margin: 3rem 2rem;
+  padding: 3rem 4rem;
+}
+
+.about-block-title {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.about-block p {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* 7. News - Numbered List
+   ============================================ */
+.news-numbered {
+  padding: 4rem 2rem;
+  border-bottom: var(--border-thicker);
+}
+
+.news-numbered-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  border-bottom: var(--border-red);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.news-numbered .news-social {
+  margin-bottom: 2rem;
+}
+
+.news-numbered .twitter-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-black);
+  border: var(--border-thick);
+  border-radius: 0;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.1s ease;
+}
+
+.news-numbered .twitter-follow:hover {
+  background: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.news-numbered-list {
+  /* no outer border, items have bottom borders */
+}
+
+.news-numbered-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 3px solid var(--color-black);
+}
+
+.news-numbered-item:last-child {
+  border-bottom: none;
+}
+
+.news-numbered-left {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.news-number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-red);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 3.5rem;
+}
+
+.news-numbered-left p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.news-numbered-left p a {
+  color: var(--color-black);
+  text-decoration-color: var(--color-red);
+}
+
+.news-numbered-left p a:hover {
+  color: var(--color-red);
+}
+
+.news-date {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 8. Projects - Full-width Stacked Bands
+   ============================================ */
+.projects-bands {
+  border-bottom: var(--border-thicker);
+}
+
+.projects-bands-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2rem 2rem 1rem;
+  margin-bottom: 0;
+  border-bottom: var(--border-red);
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.project-band {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  border-top: 4px solid var(--color-black);
+}
+
+/* Normal: image left, text right - black on white */
+.project-band-normal {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.project-band-normal .project-band-name a,
+.project-band-normal .project-band-desc a,
+.project-band-normal .project-band-desc {
+  color: var(--color-black);
+}
+
+/* Inverted: text left, image right - white on black */
+.project-band-inverted {
+  background: var(--color-black);
+  color: var(--color-white);
+  flex-direction: row-reverse;
+}
+
+.project-band-inverted .project-band-name {
+  color: var(--color-white);
+}
+
+.project-band-inverted .project-band-name a {
+  color: var(--color-white);
+}
+
+.project-band-inverted .project-band-desc,
+.project-band-inverted .project-band-desc a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.project-band-inverted .project-band-name a:hover,
+.project-band-inverted .project-band-desc a:hover {
+  color: var(--color-red);
+}
+
+.project-band-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+  overflow: hidden;
+}
+
+.project-band-image a {
+  display: block;
+  height: 100%;
+}
+
+.project-band-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+  transition: filter 0.2s ease;
+  display: block;
+}
+
+.project-band:hover .project-band-image img {
+  filter: grayscale(0%) contrast(1);
+}
+
+.project-band-text {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-band-name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.project-band-name a {
+  text-decoration: none;
+  transition: color 0.1s ease;
+}
+
+.project-band-name a:hover {
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+.project-band-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.project-band-desc a {
+  text-decoration: none;
+}
+
+.project-band-desc a:hover {
+  color: var(--color-red);
+}
+
+/* 9. Brutal Footer - Single line
+   ============================================ */
+.brutal-footer {
+  border-top: 4px solid var(--color-black);
+  padding: 1.5rem 2rem;
+  background: var(--color-white);
+}
+
+.brutal-footer p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+/* 10. Section Titles (kept for subpages)
+   ============================================ */
+.section-title {
+  font-family: var(--font-heading);
+  color: var(--color-black);
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: var(--border-red);
+  display: inline-block;
+}
+
+.section-title-center {
+  text-align: center;
+  display: block;
+  border-bottom: none;
+  position: relative;
+}
+
+.section-title-center::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: var(--color-red);
+  margin: 0.5rem auto 0;
+}
+
+/* 11. Legacy Header & Navigation (for subpages)
    ============================================ */
 .site-header {
   position: fixed;
@@ -298,7 +878,7 @@ ul, ol {
   align-items: center;
 }
 
-/* 4. Hero Section (Homepage)
+/* 12. Legacy Hero Section (for subpages if needed)
    ============================================ */
 .hero {
   position: relative;
@@ -313,21 +893,9 @@ ul, ol {
   border-bottom: var(--border-thicker);
 }
 
-/* Remove all old background patterns */
 .hero::before,
 .hero::after {
   display: none;
-}
-
-.hero > .container > .row {
-  flex-direction: column;
-}
-
-.hero > .container > .row > .col-lg-5,
-.hero > .container > .row > .col-lg-7 {
-  width: 100%;
-  max-width: 100%;
-  flex: 0 0 100%;
 }
 
 .hero-content {
@@ -359,10 +927,6 @@ ul, ol {
   line-height: 0.95;
   margin-bottom: 0.5rem;
   padding-left: 2rem;
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  background-clip: unset;
 }
 
 .hero-subtitle {
@@ -384,7 +948,6 @@ ul, ol {
   letter-spacing: 0.05em;
 }
 
-/* Hero Cards - Research Areas as horizontal newspaper strip */
 .hero-cards {
   display: flex;
   flex-direction: row;
@@ -411,7 +974,6 @@ ul, ol {
   border-right: none;
 }
 
-/* Remove old card decorations */
 .hero-card::before {
   display: none;
 }
@@ -465,38 +1027,7 @@ ul, ol {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* 5. Section Titles
-   ============================================ */
-.section-title {
-  font-family: var(--font-heading);
-  color: var(--color-black);
-  font-size: 2.5rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: var(--border-red);
-  display: inline-block;
-}
-
-.section-title-center {
-  text-align: center;
-  display: block;
-  border-bottom: none;
-  position: relative;
-}
-
-.section-title-center::after {
-  content: '';
-  display: block;
-  width: 100px;
-  height: 4px;
-  background: var(--color-red);
-  margin: 0.5rem auto 0;
-}
-
-/* 6. News Section (Homepage)
+/* 13. Legacy News Section (for subpages)
    ============================================ */
 .news-section {
   padding: 4rem 0;
@@ -605,7 +1136,7 @@ ul, ol {
   color: var(--color-red);
 }
 
-/* 7. About Section
+/* 14. Legacy About Section (for subpages)
    ============================================ */
 .about-section {
   padding: 4rem 0;
@@ -652,7 +1183,7 @@ ul, ol {
   font-family: var(--font-body);
 }
 
-/* 8. Projects Section (Homepage)
+/* 15. Legacy Projects Section (for subpages)
    ============================================ */
 .projects-section {
   background: var(--color-white);
@@ -748,7 +1279,7 @@ ul, ol {
   color: var(--color-white);
 }
 
-/* 9. Project Detail Pages
+/* 16. Project Detail Pages
    ============================================ */
 .project-hero-banner {
   background: var(--color-white);
@@ -913,7 +1444,7 @@ ul, ol {
   font-family: var(--font-body);
 }
 
-/* 10. Publications
+/* 17. Publications
    ============================================ */
 .publications-section {
   padding: 2.5rem 0;
@@ -979,7 +1510,7 @@ ul, ol {
   margin: 0;
 }
 
-/* 11. Thesis Section
+/* 18. Thesis Section
    ============================================ */
 .thesis-section {
   padding: 2.5rem 0;
@@ -1007,7 +1538,7 @@ ul, ol {
   color: var(--color-text-muted);
 }
 
-/* 12. Dataset Page
+/* 19. Dataset Page
    ============================================ */
 .dataset-section {
   padding-top: calc(var(--header-height) + 2rem);
@@ -1073,7 +1604,7 @@ ul, ol {
   line-height: 1.9;
 }
 
-/* 13. News Article Page
+/* 20. News Article Page
    ============================================ */
 .article-section {
   padding-top: calc(var(--header-height) + 3rem);
@@ -1115,7 +1646,7 @@ ul, ol {
   color: var(--color-red);
 }
 
-/* 14. Footer
+/* 21. Legacy Footer (for subpages)
    ============================================ */
 .site-footer {
   background: var(--color-white);
@@ -1195,150 +1726,7 @@ ul, ol {
   letter-spacing: 0.1em;
 }
 
-/* 15. Responsive
-   ============================================ */
-@media (max-width: 991.98px) {
-  .hero-cards {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .hero-card {
-    border-right: none;
-    border-bottom: var(--border-thick);
-  }
-
-  .hero-card:last-child {
-    border-bottom: none;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: calc(var(--header-height) + 1rem) 0 0;
-  }
-
-  .hero-title {
-    font-size: 3.5rem;
-  }
-
-  .site-nav {
-    display: none;
-  }
-
-  .site-nav.active {
-    display: block;
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    padding: 0;
-    border-bottom: var(--border-thicker);
-    z-index: 999;
-  }
-
-  .site-nav.active .nav-list {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .site-nav.active .nav-link {
-    padding: 0.75rem 1rem;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--color-black);
-  }
-
-  .site-nav.active .dropdown-menu {
-    position: static;
-    background: var(--color-white);
-    border: none;
-    border-top: 1px solid var(--color-black);
-    padding-left: 0;
-    min-width: 100%;
-  }
-
-  .site-nav.active .dropdown-menu.show {
-    display: block;
-  }
-
-  .site-nav.active .dropdown-menu li a {
-    padding-left: 2rem;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-  .footer-social {
-    justify-content: flex-start;
-    padding-top: 0;
-  }
-
-  .footer-copy {
-    text-align: left;
-    padding-top: 0;
-  }
-
-  .policy-columns {
-    grid-template-columns: 1fr;
-  }
-
-  .policy-card + .policy-card {
-    border-left: var(--border-thick);
-    border-top: none;
-  }
-
-  .organizations-list {
-    columns: 1;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.85rem;
-  }
-
-  .header-brand .brand-text {
-    display: none;
-  }
-
-  .logo-link-uni {
-    display: none;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .about-content::before {
-    font-size: 6rem;
-    top: -1.5rem;
-  }
-
-  .about-content::after {
-    font-size: 6rem;
-    bottom: -3rem;
-  }
-
-  .about-content {
-    padding: 1.5rem 1rem;
-  }
-
-  .project-page-title {
-    font-size: 2rem;
-  }
-}
-
-/* 16. People Page
+/* 22. People Page
    ============================================ */
 .people-section {
   padding: 2.5rem 0;
@@ -1454,13 +1842,7 @@ ul, ol {
   padding: 0.25rem 0;
 }
 
-@media (max-width: 575.98px) {
-  .alumni-list {
-    column-count: 1;
-  }
-}
-
-/* 17. Year headings for publications
+/* 23. Year headings for publications
    ============================================ */
 .year-heading,
 .publications-section h3 {
@@ -1476,16 +1858,13 @@ ul, ol {
   letter-spacing: 0.1em;
 }
 
-/* 18. Visible Grid / Brutalist Utilities
+/* 24. Brutalist Utilities
    ============================================ */
-
-/* Highlighted / Yellow marker utility */
 .highlight-yellow {
   background: var(--color-yellow);
   padding: 0 0.25em;
 }
 
-/* Visible grid lines on homepage sections */
 .projects-section .row {
   border: none;
 }
@@ -1495,25 +1874,11 @@ ul, ol {
   padding-bottom: 0.75rem;
 }
 
-/* Project cards grid - ensure 2-column layout */
-.projects-section .row.g-4 > .col-md-6 {
-  /* Bootstrap col-md-6 handles 2-column naturally */
-}
-
 .projects-section .row.g-4 > .col-md-4 {
   flex: 0 0 50%;
   max-width: 50%;
 }
 
-@media (max-width: 767.98px) {
-  .projects-section .row.g-4 > .col-md-4,
-  .projects-section .row.g-4 > .col-md-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-/* Bold table / list styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -1541,12 +1906,10 @@ table tr:hover td {
   background: var(--color-yellow);
 }
 
-/* Override Bootstrap rounded corners */
 .card, .btn, .form-control, .alert, .badge, .modal-content {
   border-radius: 0 !important;
 }
 
-/* Strong link styling - brutalist underlines */
 .project-description a {
   color: var(--color-black);
   text-decoration: underline;
@@ -1560,7 +1923,6 @@ table tr:hover td {
   background: var(--color-yellow);
 }
 
-/* Thesis section links */
 .thesis-section a {
   text-decoration-color: var(--color-red);
 }
@@ -1569,18 +1931,318 @@ table tr:hover td {
   color: var(--color-red);
 }
 
-/* Publications section publication-item hr override */
 .publications-section .publication-item hr,
 .thesis-section .thesis-item hr {
   border-top: 2px solid var(--color-black);
   margin: 1rem 0 0;
 }
 
-/* Logo link no decoration */
 .logo-link {
   text-decoration: none;
 }
 
 .logo-link:hover {
   text-decoration: none;
+}
+
+/* 25. Responsive
+   ============================================ */
+
+/* --- Hero typographic responsive --- */
+@media (max-width: 1200px) {
+  .hero-word-6 {
+    font-size: 9rem;
+  }
+  .hero-word-5 {
+    font-size: 8rem;
+  }
+  .hero-word-4 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* Legacy hero cards for subpages */
+  .hero-cards {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-card {
+    border-right: none;
+    border-bottom: var(--border-thick);
+  }
+
+  .hero-card:last-child {
+    border-bottom: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: calc(var(--header-height) + 1rem) 0 0;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  /* Legacy nav for subpages */
+  .site-nav {
+    display: none;
+  }
+
+  .site-nav.active {
+    display: block;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    padding: 0;
+    border-bottom: var(--border-thicker);
+    z-index: 999;
+  }
+
+  .site-nav.active .nav-list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav.active .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--color-black);
+  }
+
+  .site-nav.active .dropdown-menu {
+    position: static;
+    background: var(--color-white);
+    border: none;
+    border-top: 1px solid var(--color-black);
+    padding-left: 0;
+    min-width: 100%;
+  }
+
+  .site-nav.active .dropdown-menu.show {
+    display: block;
+  }
+
+  .site-nav.active .dropdown-menu li a {
+    padding-left: 2rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Legacy footer for subpages */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .footer-copy {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .policy-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .policy-card + .policy-card {
+    border-left: var(--border-thick);
+    border-top: none;
+  }
+
+  .organizations-list {
+    columns: 1;
+  }
+
+  /* New homepage responsive - Hero typographic */
+  .hero-word-1 { font-size: 4rem; }
+  .hero-word-2 { font-size: 5rem; }
+  .hero-word-3 { font-size: 3.5rem; }
+  .hero-word-4 { font-size: 6rem; }
+  .hero-word-5 { font-size: 7rem; }
+  .hero-word-6 { font-size: 8rem; }
+
+  /* Overlay nav responsive */
+  .overlay-nav-link {
+    font-size: 3.5rem;
+  }
+
+  /* Project bands stack vertically */
+  .project-band {
+    flex-direction: column !important;
+  }
+
+  .project-band-image {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .project-band-image img {
+    min-height: 200px;
+    max-height: 300px;
+  }
+
+  .project-band-text {
+    padding: 2rem;
+  }
+
+  /* News numbered responsive */
+  .news-numbered-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .news-date {
+    align-self: flex-start;
+  }
+
+  /* About block responsive */
+  .about-block {
+    margin: 2rem 1rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .projects-section .row.g-4 > .col-md-4,
+  .projects-section .row.g-4 > .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-word-1 { font-size: 2.5rem; }
+  .hero-word-2 { font-size: 3.2rem; }
+  .hero-word-3 { font-size: 2rem; }
+  .hero-word-4 { font-size: 4rem; }
+  .hero-word-5 { font-size: 4.5rem; }
+  .hero-word-6 { font-size: 5rem; }
+
+  .hero-typographic {
+    padding: calc(var(--header-height) + 1rem) 1rem 1rem;
+  }
+
+  .hero-typographic-uni {
+    font-size: 0.7rem;
+  }
+
+  /* Overlay nav smaller screens */
+  .overlay-nav-link {
+    font-size: 2.5rem;
+  }
+
+  .overlay-dropdown-menu li a {
+    font-size: 1rem;
+  }
+
+  /* Brutal header */
+  .brutal-header-logo {
+    font-size: 3rem;
+  }
+
+  .brutal-header {
+    padding: 0 1rem;
+  }
+
+  /* Marquee */
+  .marquee-content {
+    font-size: 1.4rem;
+  }
+
+  /* About */
+  .about-block {
+    margin: 1.5rem 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .about-block-title {
+    font-size: 3rem;
+  }
+
+  .about-block p {
+    font-size: 0.95rem;
+  }
+
+  /* News */
+  .news-numbered {
+    padding: 2rem 1rem;
+  }
+
+  .news-numbered-title {
+    font-size: 2rem;
+  }
+
+  .news-number {
+    font-size: 1.8rem;
+    min-width: 2.5rem;
+  }
+
+  /* Projects */
+  .projects-bands-title {
+    font-size: 2rem;
+    margin-left: 1rem;
+    padding: 1.5rem 1rem 0.75rem;
+  }
+
+  .project-band-text {
+    padding: 1.5rem 1rem;
+  }
+
+  .project-band-name {
+    font-size: 1.5rem;
+  }
+
+  /* Legacy */
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .header-brand .brand-text {
+    display: none;
+  }
+
+  .logo-link-uni {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .about-content::before {
+    font-size: 6rem;
+    top: -1.5rem;
+  }
+
+  .about-content::after {
+    font-size: 6rem;
+    bottom: -3rem;
+  }
+
+  .about-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .project-page-title {
+    font-size: 2rem;
+  }
+
+  .alumni-list {
+    column-count: 1;
+  }
 }
