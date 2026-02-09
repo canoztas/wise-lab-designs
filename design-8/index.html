@@ -24,10 +24,10 @@
 
 <body>
 
-	<!-- ===== MASTHEAD ===== -->
+	<!-- ===== NEWSPAPER MASTHEAD ===== -->
 	<header class="masthead" id="site-header">
 		<div class="container">
-			<div class="decorative-rule"></div>
+			<!-- Logos -->
 			<div class="masthead-logos">
 				<a href="index.html" class="logo-link">
 					<img src="images/wise_logo.png" alt="WISE Lab" class="logo-wise-masthead">
@@ -36,24 +36,37 @@
 					<img src="images/hacettepe.gif" alt="Hacettepe University" class="logo-hacettepe-masthead">
 				</a>
 			</div>
-			<div class="decorative-rule"></div>
-			<div class="masthead-university">Hacettepe University &bull; Department of Computer Engineering</div>
-			<div class="decorative-rule"></div>
-			<h1 class="masthead-title">WISE LAB</h1>
-			<div class="decorative-rule"></div>
-			<p class="masthead-subtitle">Est. 2015 &mdash; Wireless Networks &amp; Intelligent Secure Systems</p>
 
 			<div class="decorative-rule"></div>
+
+			<!-- University Info -->
+			<p class="masthead-university">Hacettepe University • Department of Computer Engineering</p>
+
+			<div class="decorative-rule"></div>
+
+			<!-- Main Title -->
+			<h1 class="masthead-title">WISE Lab</h1>
+
+			<div class="decorative-rule"></div>
+
+			<!-- Subtitle -->
+			<p class="masthead-subtitle"><em>Wireless Networks & Intelligent Secure Systems</em></p>
+			<p class="masthead-date">Est. 2015 • Vol. XI • Ankara, Turkey</p>
+
+			<div class="decorative-rule"></div>
+
+			<!-- Navigation -->
 			<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
 				<span></span>
 			</button>
+
 			<nav class="masthead-nav" id="site-nav">
 				<a href="index.html" class="nav-link">Home</a>
-				<span class="nav-dot">&bull;</span>
+				<span class="nav-separator">•</span>
 				<a href="people/" class="nav-link">People</a>
-				<span class="nav-dot">&bull;</span>
+				<span class="nav-separator">•</span>
 				<a href="publications/" class="nav-link">Publications</a>
-				<span class="nav-dot">&bull;</span>
+				<span class="nav-separator">•</span>
 				<div class="nav-dropdown">
 					<a href="#" class="nav-link nav-link-dropdown">Projects <i class="fa-solid fa-chevron-down"></i></a>
 					<div class="dropdown-menu">
@@ -65,306 +78,268 @@
 						<a href="projects/desre.html">DeSRe</a>
 					</div>
 				</div>
-				<span class="nav-dot">&bull;</span>
+				<span class="nav-separator">•</span>
 				<a href="#footer" class="nav-link">Contact</a>
 			</nav>
+
 			<div class="decorative-rule"></div>
-			<p class="dateline">Vol. X, No. 1 &mdash; Ankara, Turkey</p>
 		</div>
 	</header>
 
-	<!-- ===== FRONT PAGE: 3-COLUMN NEWSPAPER LAYOUT ===== -->
-	<section class="front-page" id="front-page">
+	<!-- ===== FRONT PAGE: NEWSPAPER LAYOUT ===== -->
+	<main class="front-page">
 		<div class="container">
-			<div class="row">
+			<div class="row g-4">
 
-				<!-- LEFT COLUMN: Research Areas + About -->
-				<div class="col-lg-3 front-col front-col-left">
+				<!-- SIDEBAR: Research Areas & About -->
+				<aside class="col-lg-3">
+					<div class="sidebar-section">
+						<h2 class="sidebar-heading">Research Focus</h2>
+						<div class="thin-rule"></div>
 
-					<h2 class="column-heading">Research Areas</h2>
-					<div class="decorative-rule"></div>
-
-					<div class="research-box">
-						<div class="research-box-icon"><i class="fa-solid fa-shield-halved"></i></div>
-						<div class="research-box-title">Cyber Security</div>
-						<p>Malware analysis, anomaly &amp; intrusion detection, trust management</p>
-					</div>
-
-					<div class="research-box">
-						<div class="research-box-icon"><i class="fa-solid fa-brain"></i></div>
-						<div class="research-box-title">Intelligent Systems</div>
-						<p>Nature inspired algorithms, evolutionary computation, their applications on security</p>
-					</div>
-
-					<div class="research-box">
-						<div class="research-box-icon"><i class="fa-solid fa-wifi"></i></div>
-						<div class="research-box-title">IoT Wireless Networks</div>
-						<p>Routing, protocols, security</p>
-					</div>
-
-					<div class="decorative-rule" style="margin-top: 1.5rem;"></div>
-					<h2 class="column-heading">About the Lab</h2>
-					<div class="decorative-rule"></div>
-
-					<div class="about-text drop-cap">
-						<p>Wireless Networks and Intelligent Secure Systems Lab conducts research on wireless networks, IoT and security. Our research is at the intersection of machine learning, nature inspired algorithms and their applications to the hard problems in networking
-							and security. The main aim of the group is to develop intelligent secure systems. We are particularly interested in malware analysis, anomaly and intrusion detection, and trust management.
-						</p>
-					</div>
-
-				</div>
-
-				<!-- CENTER COLUMN: Latest News -->
-				<div class="col-lg-6 front-col front-col-center">
-
-					<h2 class="column-heading">Latest News</h2>
-					<div class="decorative-rule"></div>
-
-					<!-- Headline (first/most recent news item) -->
-					<div class="headline">
-						<p>Organizing <a href="https://adhocnets.eai-conferences.org/2025/">AdHocNets 2025</a> in Istanbul</p>
-						<p class="news-date">December 2025</p>
-					</div>
-
-					<div class="decorative-rule"></div>
-
-					<!-- Remaining news entries -->
-					<div class="news-entry">
-						<p>Please see our paper <a href="https://link.springer.com/article/10.1007/s10207-020-00536-1">"Attention: there is an inconsistency between android permissions and application metadata!"</a> .</p>
-						<p class="news-date">January 2021</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>Our paper titled "A Cross-Layer Intrusion Detection System for RPL-Based Internet of Things" will be presented at AdHoc-Now 2020.</p>
-						<p class="news-date">October 2020</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>Happy to announce that <a href="https://web.cs.hacettepe.edu.tr/~ozdemir/">Prof. Dr. Suat Ozdemir</a> has joined our lab.</p>
-						<p class="news-date">July 2020</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p><a href="https://web.cs.hacettepe.edu.tr/~selimy/">Selim Yilmaz</a> successfully defended his thesis, "Electric Fish Optimization: A New Metaheuristic Algorithm Based on Electrolocation".</p>
-						<p class="news-date">January 2020</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p><a href="news/index.html"><strong>5G ve &#214;tesi Burs Program&#305; Hakk&#305;nda</strong></a></p>
-						<p class="news-date">January 2019</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p><a href="https://www.miun.se/en/personnel/stefanforsstrom/">Dr. Stefan Forsstrom</a> is going to visit our lab on November, 21 and give a seminar titled "Realizing the IoT vision - In the Intersection of Networks, Devices and Machine Learning". Come and join us in the seminar room!</p>
-						<p class="news-date">November 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p><a href="https://www.miun.se/en/stc-researchcentre/news-from-stc-research-center-eng/News-archive/2018-10/hacettepe-university-visits-stc/#conversion-112870498">We have visited to Mid Sweden University.</a></p>
-						<p class="news-date">October 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>Our work on <a href="https://web.cs.hacettepe.edu.tr/~ssen/files/papers/ISCTurkey18.pdf">Certificate Transparency</a> is presented at <a href="https://www.iscturkey.org/">ISCTurkey 2018</a>.</p>
-						<p class="news-date">October 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>Our short paper on <a href="https://web.cs.hacettepe.edu.tr/~ssen/files/papers/ICONCS18.pdf">IoT security</a> is presented at <a href="http://iconcs.org/">ICONCS 2018</a>.</p>
-						<p class="news-date">October 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>New Joint Project with <a href="https://www.miun.se/en/">Mid Sweden University</a>:
-						<br><a href="https://www.miun.se/en/stc-researchcentre/news-from-stc-research-center-eng/News-archive/2018-9/a-new-research-exchange-with-turkey-to-excel-in-security-of-iiot/">Detecting Intrusions in Industrial Internet of Things</a></p>
-						<p class="news-date">September 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>New TUBITAK-1001 Project: <br> Discovering Security Risks of Android Apps using Metadata</p>
-						<p class="news-date">August 2018</p>
-					</div>
-
-					<div class="decorative-rule-thin"></div>
-
-					<div class="news-entry">
-						<p>Our paper titled "Coevolution of Mobile Malware and Anti-Malware" is accepted to the IEEE Transactions on Information Forensics &amp; Security.</p>
-						<p class="news-date">March 2018</p>
-					</div>
-
-					<div class="news-social">
-						<a href="https://twitter.com/huWISElab" target="_blank" rel="noopener" class="twitter-follow">
-							<i class="fa-brands fa-x-twitter"></i> Follow @huWISElab
-						</a>
-					</div>
-
-				</div>
-
-				<!-- RIGHT COLUMN: Bulletin Board -->
-				<div class="col-lg-3 front-col front-col-right">
-
-					<h2 class="column-heading">Bulletin Board</h2>
-					<div class="decorative-rule"></div>
-
-					<div class="bulletin-board">
-
-						<div class="bulletin-card">
-							<h3 class="bulletin-card-title">Quick Facts</h3>
-							<ul class="bulletin-list">
-								<li><strong>Founded:</strong> 2015</li>
-								<li><strong>Focus:</strong> Security &amp; IoT</li>
-								<li><strong>Department:</strong> Computer Engineering</li>
-								<li><strong>Location:</strong> Ankara, Turkey</li>
-							</ul>
+						<div class="research-item">
+							<div class="research-icon"><i class="fa-solid fa-shield-halved"></i></div>
+							<h3 class="research-title">Cyber Security</h3>
+							<p>Malware analysis, anomaly & intrusion detection, trust management</p>
 						</div>
 
-						<div class="decorative-rule-thin"></div>
-
-						<div class="bulletin-card">
-							<h3 class="bulletin-card-title">Contact</h3>
-							<address class="bulletin-address">
-								<p><i class="fa-solid fa-location-dot"></i> Hacettepe University<br>
-								Department of Computer Engineering Z06<br>
-								06800 Ankara</p>
-								<p><i class="fa-solid fa-phone"></i> +90 312 7807538</p>
-								<p><i class="fa-solid fa-envelope"></i>
-									<a href="mailto:wise@cs.hacettepe.edu.tr">wise@cs.hacettepe.edu.tr</a>
-								</p>
-							</address>
+						<div class="research-item">
+							<div class="research-icon"><i class="fa-solid fa-brain"></i></div>
+							<h3 class="research-title">Intelligent Systems</h3>
+							<p>Nature inspired algorithms, evolutionary computation, applications on security</p>
 						</div>
 
-						<div class="decorative-rule-thin"></div>
-
-						<div class="bulletin-card">
-							<h3 class="bulletin-card-title">Follow Us</h3>
-							<div class="bulletin-social">
-								<a href="https://twitter.com/huWISElab" target="_blank" rel="noopener" aria-label="Twitter">
-									<i class="fa-brands fa-x-twitter"></i> @huWISElab
-								</a>
-							</div>
+						<div class="research-item">
+							<div class="research-icon"><i class="fa-solid fa-wifi"></i></div>
+							<h3 class="research-title">IoT Networks</h3>
+							<p>Routing, protocols, security</p>
 						</div>
+					</div>
 
-						<div class="decorative-rule-thin"></div>
+					<div class="sidebar-section">
+						<h2 class="sidebar-heading">About</h2>
+						<div class="thin-rule"></div>
+						<div class="about-text">
+							<p class="drop-cap">Wireless Networks and Intelligent Secure Systems Lab conducts research on wireless networks, IoT and security. Our research is at the intersection of machine learning, nature inspired algorithms and their applications to the hard problems in networking and security.</p>
+						</div>
+					</div>
 
-						<div class="bulletin-card bulletin-card-logo">
-							<a href="https://www.hacettepe.edu.tr" target="_blank" rel="noopener">
-								<img src="images/hacettepe.gif" alt="Hacettepe University" class="bulletin-uni-logo">
+					<div class="sidebar-section">
+						<h2 class="sidebar-heading">Quick Facts</h2>
+						<div class="thin-rule"></div>
+						<ul class="fact-list">
+							<li><strong>Founded:</strong> 2015</li>
+							<li><strong>Department:</strong> Computer Engineering</li>
+							<li><strong>Location:</strong> Ankara, Turkey</li>
+						</ul>
+					</div>
+				</aside>
+
+				<!-- MAIN COLUMN: Latest News -->
+				<section class="col-lg-6">
+					<div class="main-section">
+						<h2 class="section-heading">Latest Developments</h2>
+						<div class="decorative-rule"></div>
+
+						<!-- Lead Story -->
+						<article class="lead-story">
+							<h3 class="story-headline">
+								<a href="https://adhocnets.eai-conferences.org/2025/">Organizing AdHocNets 2025 in Istanbul</a>
+							</h3>
+							<p class="story-date">December 2025</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<!-- Regular News Items -->
+						<article class="news-story">
+							<p>Please see our paper <a href="https://link.springer.com/article/10.1007/s10207-020-00536-1">"Attention: there is an inconsistency between android permissions and application metadata!"</a></p>
+							<p class="story-date">January 2021</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p>Our paper titled "A Cross-Layer Intrusion Detection System for RPL-Based Internet of Things" will be presented at AdHoc-Now 2020.</p>
+							<p class="story-date">October 2020</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p>Happy to announce that <a href="https://web.cs.hacettepe.edu.tr/~ozdemir/">Prof. Dr. Suat Ozdemir</a> has joined our lab.</p>
+							<p class="story-date">July 2020</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p><a href="https://web.cs.hacettepe.edu.tr/~selimy/">Selim Yilmaz</a> successfully defended his thesis, "Electric Fish Optimization: A New Metaheuristic Algorithm Based on Electrolocation".</p>
+							<p class="story-date">January 2020</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p><a href="news/index.html"><strong>5G ve Ötesi Burs Programı Hakkında</strong></a></p>
+							<p class="story-date">January 2019</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p><a href="https://www.miun.se/en/personnel/stefanforsstrom/">Dr. Stefan Forsstrom</a> is going to visit our lab on November, 21 and give a seminar titled "Realizing the IoT vision - In the Intersection of Networks, Devices and Machine Learning".</p>
+							<p class="story-date">November 2018</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p><a href="https://www.miun.se/en/stc-researchcentre/news-from-stc-research-center-eng/News-archive/2018-10/hacettepe-university-visits-stc/#conversion-112870498">We have visited to Mid Sweden University.</a></p>
+							<p class="story-date">October 2018</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p>Our work on <a href="https://web.cs.hacettepe.edu.tr/~ssen/files/papers/ISCTurkey18.pdf">Certificate Transparency</a> is presented at <a href="https://www.iscturkey.org/">ISCTurkey 2018</a>.</p>
+							<p class="story-date">October 2018</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<article class="news-story">
+							<p>New Joint Project with <a href="https://www.miun.se/en/">Mid Sweden University</a>: <a href="https://www.miun.se/en/stc-researchcentre/news-from-stc-research-center-eng/News-archive/2018-9/a-new-research-exchange-with-turkey-to-excel-in-security-of-iiot/">Detecting Intrusions in Industrial Internet of Things</a></p>
+							<p class="story-date">September 2018</p>
+							<div class="thin-rule"></div>
+						</article>
+
+						<div class="social-follow">
+							<a href="https://twitter.com/huWISElab" target="_blank" rel="noopener" class="twitter-link">
+								<i class="fa-brands fa-x-twitter"></i> Follow @huWISElab
 							</a>
 						</div>
+					</div>
+				</section>
 
+				<!-- SIDEBAR RIGHT: Contact & Info -->
+				<aside class="col-lg-3">
+					<div class="sidebar-section">
+						<h2 class="sidebar-heading">Contact</h2>
+						<div class="thin-rule"></div>
+						<address class="contact-info">
+							<p><i class="fa-solid fa-location-dot"></i> Hacettepe University<br>
+							Dept. of Computer Engineering<br>
+							Z06, 06800 Ankara, Turkey</p>
+							<p><i class="fa-solid fa-phone"></i> +90 312 7807538</p>
+							<p><i class="fa-solid fa-envelope"></i> <a href="mailto:wise@cs.hacettepe.edu.tr">wise@cs.hacettepe.edu.tr</a></p>
+						</address>
 					</div>
 
-				</div>
+					<div class="sidebar-section">
+						<h2 class="sidebar-heading">Follow</h2>
+						<div class="thin-rule"></div>
+						<div class="social-links">
+							<a href="https://twitter.com/huWISElab" target="_blank" rel="noopener">
+								<i class="fa-brands fa-x-twitter"></i> @huWISElab
+							</a>
+						</div>
+					</div>
+
+					<div class="sidebar-section">
+						<div class="university-logo">
+							<a href="https://www.hacettepe.edu.tr" target="_blank" rel="noopener">
+								<img src="images/hacettepe.gif" alt="Hacettepe University">
+							</a>
+						</div>
+					</div>
+				</aside>
 
 			</div>
 		</div>
-	</section>
+	</main>
 
-	<div class="decorative-rule-section"></div>
+	<!-- Section Divider -->
+	<div class="section-divider">
+		<div class="decorative-rule"></div>
+	</div>
 
-	<!-- ===== PROJECTS: JOURNAL ARTICLE ABSTRACTS ===== -->
+	<!-- ===== RESEARCH PROJECTS: JOURNAL ABSTRACTS ===== -->
 	<section class="projects-section" id="projects">
 		<div class="container">
-			<h2 class="journal-section-title">Current Research Projects</h2>
+			<h2 class="journal-heading">Current Research Projects</h2>
 			<div class="decorative-rule"></div>
+			<p class="journal-intro"><em>Scholarly abstracts of our ongoing research initiatives</em></p>
 
-			<div class="row">
+			<div class="row g-4">
+				<!-- Left Column -->
 				<div class="col-md-6">
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/secure-protocols.html">Secure Protocols in IoT</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">In this project, IoT protocols will be aimed to be analyzed from the security perspective and be strengthened. It is a cooperative work with Dr. Manel Guerrero-Zapata and Ruken Zilan from Universitat Polit&egrave;cnica de Catalunya (UPC) - Barcelona Tech.</p>
-						<a href="projects/secure-protocols.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">In this project, IoT protocols will be aimed to be analyzed from the security perspective and be strengthened. It is a cooperative work with Dr. Manel Guerrero-Zapata and Ruken Zilan from Universitat Politècnica de Catalunya (UPC) - Barcelona Tech.</p>
+						<a href="projects/secure-protocols.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 
-					<div class="decorative-rule-thin"></div>
-
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/updroid.html">UpDroid</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">Update attacks are one of the biggest threats against mobile devices today. Existing mobile security solutions are generally ineffective in detecting such attacks. The main objective of this project is to analyze updated attacks, to create a dataset of such attacks, to detect such attacks by using static and dynamic analysis based detection techniques.</p>
-						<a href="projects/updroid.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">Update attacks are one of the biggest threats against mobile devices today. Existing mobile security solutions are generally ineffective in detecting such attacks. The main objective of this project is to analyze updated attacks, to create a dataset of such attacks, to detect such attacks by using static and dynamic analysis based detection techniques.</p>
+						<a href="projects/updroid.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 
-					<div class="decorative-rule-thin"></div>
-
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/co-evolution.html">Co-Evolution of Malwares and Anti-Malware Systems</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">As long as anti-malware software develops, malware writers also develop their malicious code by using various evasion strategies such as obfuscation and encryption. This is the lifecycle of malicious and anti-malware software. In this study, the use of evolutionary computation techniques are investigated, both for developing new variants of mobile malwares and for developing better security solutions against them automatically.</p>
-						<a href="projects/co-evolution.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">As long as anti-malware software develops, malware writers also develop their malicious code by using various evasion strategies such as obfuscation and encryption. This is the lifecycle of malicious and anti-malware software. In this study, the use of evolutionary computation techniques are investigated, both for developing new variants of mobile malwares and for developing better security solutions against them automatically.</p>
+						<a href="projects/co-evolution.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 				</div>
 
+				<!-- Right Column -->
 				<div class="col-md-6">
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/coiot.html">CoIoT</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">Coevolutionary computation techniques for developing intrusion detection models for IoT networks utilizing IPv6 routing protocol in low power lossy networks (RPL).</p>
-						<a href="projects/coiot.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">Coevolutionary computation techniques for developing intrusion detection models for IoT networks utilizing IPv6 routing protocol in low power lossy networks (RPL).</p>
+						<a href="projects/coiot.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 
-					<div class="decorative-rule-thin"></div>
-
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/detecting-intrusions.html">Detecting Intrusions in IIoT</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">Industrial IoT will replace many wired/wireless industrial components and will be required to be highly reliable and secure. Intrusion detection systems are key components in securing IIoT.</p>
-						<a href="projects/detecting-intrusions.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">Industrial IoT will replace many wired/wireless industrial components and will be required to be highly reliable and secure. Intrusion detection systems are key components in securing IIoT.</p>
+						<a href="projects/detecting-intrusions.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 
-					<div class="decorative-rule-thin"></div>
-
-					<div class="journal-entry">
-						<h3 class="journal-entry-title">
+					<article class="journal-abstract">
+						<h3 class="abstract-title">
 							<a href="projects/desre.html">DeSRe</a>
 						</h3>
-						<p class="journal-entry-label">Abstract</p>
-						<p class="journal-entry-text">Discovering Security Risks of Android Apps using Metadata. Leveraging app definitions, scores, and user feedback from Android markets to identify security vulnerabilities.</p>
-						<a href="projects/desre.html" class="journal-read-more">Read more &rarr;</a>
-					</div>
+						<p class="abstract-label">Abstract</p>
+						<p class="abstract-text">Discovering Security Risks of Android Apps using Metadata. Leveraging app definitions, scores, and user feedback from Android markets to identify security vulnerabilities.</p>
+						<a href="projects/desre.html" class="read-more">Read full article →</a>
+						<div class="thin-rule"></div>
+					</article>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- ===== FOOTER: PUBLICATION INFO ===== -->
+	<!-- ===== FOOTER ===== -->
 	<footer class="site-footer" id="footer">
 		<div class="container">
 			<div class="decorative-rule"></div>
-			<div class="publication-footer">
-				<p>&copy; WISE Lab, Hacettepe University. All rights reserved.</p>
-				<p>Department of Computer Engineering, Z06, 06800 Ankara</p>
+			<div class="footer-content">
+				<p>&copy; 2025 WISE Lab, Hacettepe University. All rights reserved.</p>
+				<p class="footer-meta">Department of Computer Engineering, Z06, 06800 Ankara, Turkey</p>
+				<p class="footer-meta"><em>Typeset in Playfair Display & Source Serif 4</em></p>
 			</div>
 			<div class="decorative-rule"></div>
 		</div>

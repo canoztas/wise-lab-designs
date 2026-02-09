@@ -1605,3 +1605,350 @@ ul, ol {
     font-size: 2.5rem;
   }
 }
+
+/* Refactored Newspaper Layout Styles
+   ============================================ */
+
+/* Masthead Date */
+.masthead-date {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin: 0.5rem 0 0;
+}
+
+/* Navigation Separator */
+.nav-separator {
+  display: inline;
+  margin: 0 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+/* Thin Rule */
+.thin-rule {
+  height: 1px;
+  background: var(--color-border);
+  margin: 1rem 0;
+  border: none;
+}
+
+/* Front Page Layout */
+.front-page {
+  padding: 2rem 0;
+}
+
+/* Sidebar Sections */
+.sidebar-section {
+  margin-bottom: 2rem;
+}
+
+.sidebar-heading {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-heading);
+}
+
+/* Research Items */
+.research-item {
+  margin-bottom: 1.5rem;
+}
+
+.research-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent-primary);
+  margin-bottom: 0.5rem;
+}
+
+.research-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.25rem;
+  color: var(--color-text-heading);
+}
+
+.research-item p {
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* About Text with Drop Cap */
+.about-text p.drop-cap::first-letter {
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.9;
+  margin: 0.05em 0.1em 0 0;
+  font-family: var(--font-heading);
+  color: var(--color-accent-primary);
+}
+
+/* Quick Facts List */
+.fact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.fact-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Main Section (News) */
+.main-section {
+  padding: 0;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-heading);
+}
+
+/* News Stories */
+.lead-story {
+  margin-bottom: 1.5rem;
+}
+
+.story-headline {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.story-headline a {
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.story-headline a:hover {
+  color: var(--color-accent-primary);
+}
+
+.news-story {
+  margin-bottom: 1.25rem;
+}
+
+.news-story p {
+  margin: 0 0 0.25rem;
+  line-height: 1.6;
+}
+
+.story-date {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* Social Follow */
+.social-follow {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.twitter-link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.twitter-link:hover {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-accent-primary);
+}
+
+/* Contact Info */
+.contact-info {
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.contact-info p {
+  margin: 0 0 0.75rem;
+}
+
+.contact-info i {
+  margin-right: 0.5rem;
+  color: var(--color-accent-primary);
+}
+
+/* Social Links */
+.social-links {
+  font-size: 0.9rem;
+}
+
+.social-links a {
+  display: inline-block;
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+
+.social-links a:hover {
+  color: var(--color-text-heading);
+}
+
+.social-links i {
+  margin-right: 0.5rem;
+}
+
+/* University Logo */
+.university-logo {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.university-logo img {
+  max-height: 80px;
+  width: auto;
+}
+
+/* Section Divider */
+.section-divider {
+  margin: 2rem 0;
+}
+
+/* Journal Section */
+.journal-heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.journal-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 2rem;
+}
+
+/* Journal Abstracts */
+.journal-abstract {
+  margin-bottom: 2rem;
+}
+
+.abstract-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.abstract-title a {
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.abstract-title a:hover {
+  color: var(--color-accent-primary);
+}
+
+.abstract-label {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.abstract-text {
+  text-align: justify;
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+
+.read-more {
+  font-size: 0.85rem;
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.read-more:hover {
+  color: var(--color-text-heading);
+}
+
+/* Footer Content */
+.footer-content {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.footer-content p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.footer-meta {
+  font-size: 0.8rem !important;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .nav-separator {
+    display: none;
+  }
+
+  .sidebar-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .main-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .story-headline {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-text p.drop-cap::first-letter {
+    font-size: 2.5em;
+  }
+
+  .journal-heading {
+    font-size: 1.5rem;
+  }
+
+  .front-page {
+    padding: 1rem 0;
+  }
+}
