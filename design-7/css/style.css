@@ -1464,21 +1464,6 @@ ul, ol {
   text-shadow: 0 0 10px rgba(255, 45, 149, 0.5);
 }
 
-.alumni-list {
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-.alumni-list li {
-  padding: 0.25rem 0;
-}
-
-@media (max-width: 575.98px) {
-  .alumni-list {
-    column-count: 1;
-  }
-}
-
 /* 17. Year headings for publications
    ============================================ */
 .year-heading {

@@ -1833,15 +1833,6 @@ ul, ol {
   color: var(--color-red);
 }
 
-.alumni-list {
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-.alumni-list li {
-  padding: 0.25rem 0;
-}
-
 /* 23. Year headings for publications
    ============================================ */
 .year-heading,
@@ -2240,9 +2231,5 @@ table tr:hover td {
 
   .project-page-title {
     font-size: 2rem;
-  }
-
-  .alumni-list {
-    column-count: 1;
   }
 }

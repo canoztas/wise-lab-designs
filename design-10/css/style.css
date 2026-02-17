@@ -1303,15 +1303,6 @@ ul, ol {
   transform: translateY(-2px);
 }
 
-.alumni-list {
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-.alumni-list li {
-  padding: 0.25rem 0;
-}
-
 /* 17. Year headings for publications
    ============================================ */
 .year-heading {
@@ -1463,10 +1454,6 @@ ul, ol {
 
   .section-title {
     font-size: 1.25rem;
-  }
-
-  .alumni-list {
-    column-count: 1;
   }
 
   .stat-badges-row {

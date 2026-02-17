@@ -1455,15 +1455,6 @@ ul, ol {
   color: var(--color-accent-green);
 }
 
-.alumni-list {
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-.alumni-list li {
-  padding: 0.25rem 0;
-}
-
 /* 17. Year headings for publications
    ============================================ */
 .year-heading {
@@ -1767,10 +1758,6 @@ ul, ol {
 
   .section-title {
     font-size: 1.2rem;
-  }
-
-  .alumni-list {
-    column-count: 1;
   }
 
   .stat-item {
